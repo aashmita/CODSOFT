@@ -1,417 +1,311 @@
-/* Color Palette Profiles Context Themes mapping */
-.theme-dark {
-    --glass-bg: rgba(15, 15, 25, 0.65);
-    --glass-border: rgba(255, 255, 255, 0.08);
-    --sidebar-bg: rgba(8, 8, 14, 0.4);
-    --text-main: #f3f4f6;
-    --text-muted: #9ca3af;
-    --accent: #6366f1;
-    --accent-glow: rgba(99, 102, 241, 0.4);
-    --key-num: rgba(255, 255, 255, 0.04);
-    --key-op: rgba(249, 115, 22, 0.1);
-    --key-op-txt: #f97316;
-    --body-bg: #050508;
+/* Professional standard system color palette variables configuration settings */
+.dark-mode {
+    --bg-main: #121214;
+    --panel-bg: #1e1e24;
+    --border-color: #2d2d34;
+    --sidebar-bg: #18181c;
+    --text-primary: #f8f9fa;
+    --text-muted: #a0a5b0;
+    --accent-blue: #2f66f6;
+    --key-bg: #26262b;
+    --key-op-bg: #332721;
+    --key-op-text: #f97316;
+    --screen-bg: #141416;
 }
 
-.theme-light {
-    --glass-bg: rgba(255, 255, 255, 0.65);
-    --glass-border: rgba(0, 0, 0, 0.06);
-    --sidebar-bg: rgba(240, 240, 245, 0.5);
-    --text-main: #1f2937;
-    --text-muted: #6b7280;
-    --accent: #3b82f6;
-    --accent-glow: rgba(59, 130, 246, 0.3);
-    --key-num: rgba(0, 0, 0, 0.03);
-    --key-op: rgba(59, 130, 246, 0.08);
-    --key-op-txt: #2563eb;
-    --body-bg: #f3f4f6;
+.light-mode {
+    --bg-main: #f4f5f7;
+    --panel-bg: #ffffff;
+    --border-color: #e2e8f0;
+    --sidebar-bg: #f8fafc;
+    --text-primary: #1e293b;
+    --text-muted: #64748b;
+    --accent-blue: #2563eb;
+    --key-bg: #f1f5f9;
+    --key-op-bg: #fef3c7;
+    --key-op-text: #d97706;
+    --screen-bg: #f8fafc;
 }
 
-.theme-neon {
-    --glass-bg: rgba(10, 0, 20, 0.75);
-    --glass-border: rgba(0, 255, 200, 0.15);
-    --sidebar-bg: rgba(5, 0, 10, 0.6);
-    --text-main: #00ffcc;
-    --text-muted: #ba68c8;
-    --accent: #d500f9;
-    --accent-glow: rgba(213, 0, 249, 0.5);
-    --key-num: rgba(255, 255, 255, 0.02);
-    --key-op: rgba(0, 255, 200, 0.05);
-    --key-op-txt: #00ffcc;
-    --body-bg: #020005;
-}
-
-/* Page Core Background & Environment Setup */
 body {
-    background-color: var(--body-bg);
-    color: var(--text-main);
-    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    background-color: var(--bg-main);
+    color: var(--text-primary);
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     min-height: 100vh;
     margin: 0;
     display: flex;
     justify-content: center;
     align-items: center;
-    overflow-x: hidden;
-    position: relative;
-    transition: background 0.4s ease;
+    transition: background-color 0.2s ease, color 0.2s ease;
 }
 
-/* Background Ambient Orbs */
-.glow-orb {
-    position: absolute;
-    width: 450px;
-    height: 450px;
-    border-radius: 50%;
-    filter: blur(120px);
-    z-index: 0;
-    opacity: 0.4;
-    pointer-events: none;
-}
-.orb-1 { top: -10%; left: 15%; background: var(--accent); }
-.orb-2 { bottom: -10%; right: 15%; background: #ec4899; }
-
-/* Dashboard Translucent Panel Wrapper */
-.dashboard-container {
-    background: var(--glass-bg);
-    backdrop-filter: blur(24px) saturate(180%);
-    -webkit-backdrop-filter: blur(24px) saturate(180%);
-    border: 1px solid var(--glass-border);
-    width: 900px;
-    height: 620px;
-    border-radius: 28px;
+/* Dashboard Desktop Layout Container Box */
+.app-container {
+    background: var(--panel-bg);
+    border: 1px solid var(--border-color);
+    width: 860px;
+    height: 560px;
+    border-radius: 16px;
     display: grid;
-    grid-template-columns: 260px 1fr;
+    grid-template-columns: 230px 1fr;
     overflow: hidden;
-    box-shadow: 0 30px 70px rgba(0, 0, 0, 0.35);
-    z-index: 10;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 }
 
-/* Left Navigation Sidebar Design Layout */
+/* Sidebar Styling Options Panel Controls */
 .sidebar {
     background: var(--sidebar-bg);
-    border-right: 1px solid var(--glass-border);
-    padding: 30px 20px;
+    border-right: 1px solid var(--border-color);
+    padding: 24px 16px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
 }
 
-.brand {
+.sidebar-header {
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 10px;
 }
-.brand h2 { font-size: 1.4rem; font-weight: 700; margin: 0; tracking: -0.5px; }
-.logo-icon { font-size: 1.5rem; }
+.sidebar-header h2 { font-size: 1.15rem; margin: 0; font-weight: 600; }
+.app-icon { font-size: 1.25rem; }
 
-.nav-menu {
+.sidebar-nav {
     display: flex;
     flex-direction: column;
-    gap: 8px;
-    margin-top: -60px;
+    gap: 6px;
+    margin-top: -40px;
 }
 
-.nav-btn {
+.menu-btn {
     background: none;
     border: none;
     color: var(--text-muted);
-    padding: 14px 18px;
-    border-radius: 14px;
-    font-size: 1rem;
+    padding: 10px 14px;
+    border-radius: 8px;
+    font-size: 0.9rem;
     text-align: left;
     cursor: pointer;
     display: flex;
     align-items: center;
-    gap: 14px;
+    gap: 10px;
     font-weight: 500;
-    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: background 0.15s, color 0.15s;
+}
+.menu-btn:hover { background: var(--key-bg); color: var(--text-primary); }
+.menu-btn.active {
+    background: var(--accent-blue);
+    color: #ffffff;
 }
 
-.nav-btn:hover {
-    background: rgba(255, 255, 255, 0.05);
-    color: var(--text-main);
-}
-
-.nav-btn.active {
-    background: var(--accent);
-    color: #ffffff !important;
-    box-shadow: 0 8px 20px var(--accent-glow);
-}
-
-.sidebar-footer {
+.sidebar-settings {
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: 8px;
 }
-
 .setting-row {
     display: flex;
     align-items: center;
-    gap: 10px;
-    background: rgba(255, 255, 255, 0.03);
+    gap: 8px;
+    background: var(--key-bg);
     padding: 8px 12px;
-    border-radius: 10px;
+    border-radius: 6px;
+    border: 1px solid var(--border-color);
 }
-
 .setting-row select {
     background: none;
     border: none;
-    color: var(--text-main);
+    color: var(--text-primary);
     font-size: 0.85rem;
+    width: 100%;
     outline: none;
     cursor: pointer;
-    width: 100%;
 }
+.check-row {
+    gap: 10px;
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+.check-row input { cursor: pointer; }
 
-/* Right Main Work Area Panel Setup */
-.main-workspace {
-    padding: 35px 40px;
+/* Main Workspace Panel Element Blocks */
+.main-content {
+    padding: 28px;
     display: flex;
     flex-direction: column;
 }
 
-.workspace-header {
+.content-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 25px;
+    margin-bottom: 16px;
 }
+.title-block h1 { font-size: 1.35rem; margin: 0; font-weight: 600; }
+.title-block p { color: var(--text-muted); font-size: 0.8rem; margin: 2px 0 0 0; }
 
-.workspace-header h1 { font-size: 1.6rem; font-weight: 700; margin: 0; }
-.sub-status { color: var(--text-muted); font-size: 0.85rem; margin: 4px 0 0 0; }
-
-.action-trigger-btn {
-    background: var(--key-num);
-    border: 1px solid var(--glass-border);
-    color: var(--text-main);
-    width: 44px;
-    height: 44px;
+.voice-trigger {
+    background: var(--key-bg);
+    border: 1px solid var(--border-color);
+    color: var(--text-primary);
+    width: 36px;
+    height: 36px;
     border-radius: 50%;
     cursor: pointer;
-    font-size: 1.1rem;
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: background 0.2s;
 }
-.action-trigger-btn:hover { background: rgba(255, 255, 255, 0.08); }
+.voice-trigger:hover { filter: brightness(1.1); }
 
-/* Unified Display Monitor Layer Block */
-.display-canvas {
-    background: rgba(0, 0, 0, 0.15);
-    border: 1px solid var(--glass-border);
-    padding: 20px 25px;
-    border-radius: 20px;
-    margin-bottom: 25px;
+/* Screen Display Blocks Component */
+.display-section {
+    background: var(--screen-bg);
+    border: 1px solid var(--border-color);
+    padding: 14px 18px;
+    border-radius: 10px;
+    margin-bottom: 16px;
     text-align: right;
 }
-
-.expr-line {
+.preview-text {
     color: var(--text-muted);
-    font-size: 1.1rem;
-    min-height: 1.5rem;
-    letter-spacing: 0.5px;
+    font-size: 0.95rem;
+    min-height: 1.2rem;
+    white-space: nowrap;
+    overflow-x: auto;
 }
-
-.display-input-wrap {
+.input-row {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-top: 5px;
+    margin-top: 4px;
 }
-
-#main-display {
+#calc-screen {
     background: none;
     border: none;
-    color: var(--text-main);
-    font-size: 2.5rem;
+    color: var(--text-primary);
+    font-size: 2rem;
     font-weight: 600;
     width: 100%;
     text-align: right;
     outline: none;
 }
-
-.inline-copy-btn {
+.copy-btn {
     background: none;
     border: none;
     cursor: pointer;
-    font-size: 1.1rem;
-    opacity: 0.4;
-    transition: opacity 0.2s;
-    padding-left: 15px;
+    font-size: 0.95rem;
+    opacity: 0.5;
+    transition: opacity 0.15s;
 }
-.inline-copy-btn:hover { opacity: 1; }
+.copy-btn:hover { opacity: 1; }
 
-/* High-Tech Pad Dynamic Button Layout Grid */
-.pad-layout-grid {
+/* Grid Dynamic Column Structures Configuration Rule Blocks */
+.keypad-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 12px;
+    gap: 8px;
     flex-grow: 1;
 }
 
-/* Dynamic Hidden Columns for standard toggle state rules */
-.dashboard-container.mode-standard .sci-btn { display: none; }
-.dashboard-container.mode-scientific .pad-layout-grid {
+.app-container.mode-standard .btn-sci { display: none; }
+.app-container.mode-scientific .keypad-grid {
     grid-template-columns: repeat(6, 1fr);
 }
 
 .btn {
     border: none;
-    border-radius: 14px;
-    font-size: 1.25rem;
+    border-radius: 8px;
+    font-size: 1.05rem;
     font-weight: 500;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: transform 0.05s ease, background 0.2s;
+    transition: background 0.1s;
 }
-.btn:active { transform: scale(0.96); }
+.btn-num { background: var(--key-bg); color: var(--text-primary); }
+.btn-num:hover { filter: brightness(1.1); }
 
-.numeric-btn { background: var(--key-num); color: var(--text-main); }
-.numeric-btn:hover { background: rgba(255, 255, 255, 0.08); }
+.btn-operator { background: var(--key-op-bg); color: var(--key-op-text); font-weight: 600; }
+.btn-operator:hover { filter: brightness(1.05); }
 
-.operator-btn { background: var(--key-op); color: var(--key-op-txt); font-weight: 600; }
-.operator-btn:hover { filter: brightness(1.15); }
+.btn-clear { background: rgba(239, 68, 68, 0.1); color: #ef4444; }
+.btn-func { background: var(--key-bg); color: var(--text-primary); opacity: 0.8; }
+.btn-sci { background: var(--key-bg); color: var(--text-muted); font-size: 0.9rem; }
 
-.functional-btn { background: rgba(239, 68, 68, 0.08); color: #ef4444; }
-.functional-btn:hover { background: rgba(239, 68, 68, 0.15); }
-
-.sci-btn { background: rgba(255, 255, 255, 0.02); color: var(--text-muted); font-size: 1rem !important; }
-.sci-btn:hover { color: var(--text-main); background: rgba(255, 255, 255, 0.05); }
-
-.execute-btn {
-    background: var(--accent);
+.btn-equals {
+    background: var(--accent-blue);
     color: #ffffff;
     font-weight: 600;
-    border-radius: 16px;
-    height: 52px;
-    box-shadow: 0 4px 15px var(--accent-glow);
-}
-.execute-btn:hover { filter: brightness(1.1); }
-
-/* Dashboard Sub-View Content Modular Overlays */
-.dashboard-subview {
-    animation: fadeIn 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    flex-grow: 1;
+    height: 42px;
 }
 
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(8px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
+/* Hidden elements utilities rules blocks toggles state options adjustments */
+.sub-panel { flex-grow: 1; }
 .hidden { display: none !important; }
 
-/* Advanced Unit Converter UI Cards Layout */
-.form-card {
-    background: rgba(0, 0, 0, 0.1);
-    border: 1px solid var(--glass-border);
-    border-radius: 20px;
-    padding: 25px;
+/* Conversion Panel Block Custom Design Rules Templates */
+.converter-box {
+    background: var(--sidebar-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 16px;
 }
-
-.input-field-block {
+.form-group {
     display: flex;
     flex-direction: column;
-    gap: 8px;
-    margin-bottom: 20px;
+    gap: 4px;
+    margin-bottom: 12px;
 }
-.input-field-block label { font-size: 0.85rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; }
-.input-field-block select, .input-field-block input {
-    background: rgba(255, 255, 255, 0.04);
-    border: 1px solid var(--glass-border);
-    padding: 14px;
-    border-radius: 12px;
-    color: var(--text-main);
-    font-size: 1.05rem;
+.form-group label { font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; }
+.form-group input, .form-group select {
+    background: var(--key-bg);
+    border: 1px solid var(--border-color);
+    padding: 10px;
+    border-radius: 6px;
+    color: var(--text-primary);
+    font-size: 0.95rem;
     outline: none;
 }
-
-.split-input-row {
+.io-split-row {
     display: grid;
-    grid-template-columns: 1fr 40px 1fr;
+    grid-template-columns: 1fr 24px 1fr;
     align-items: center;
-    gap: 15px;
+    gap: 10px;
 }
-
-.conversion-vector {
-    text-align: center;
-    font-size: 1.3rem;
-    color: var(--accent);
-    margin-top: 15px;
-}
-
-.read-only-result-plate {
-    background: rgba(0, 0, 0, 0.15);
-    border: 1px solid var(--glass-border);
-    padding: 14px;
-    border-radius: 12px;
-    font-size: 1.3rem;
+.swap-icon { text-align: center; color: var(--accent-blue); font-weight: 600; margin-top: 12px; }
+.static-result {
+    background: var(--screen-bg);
+    border: 1px solid var(--border-color);
+    padding: 10px;
+    border-radius: 6px;
+    font-size: 1.1rem;
     font-weight: 600;
-    color: var(--accent);
-    min-height: 25px;
+    min-height: 20px;
 }
 
-/* History Analytics View Deck Elements Layout */
-.history-deck-frame {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-}
-
-.deck-top-actions {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 15px;
-}
-.deck-top-actions h4 { margin: 0; font-size: 1.1rem; color: var(--text-muted); }
-
-.flush-cache-btn {
+/* Logs Container Tracking Arrays Style lists nodes items */
+.history-wrapper { display: flex; flex-direction: column; height: 100%; }
+.history-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
+.history-header h4 { margin: 0; font-size: 0.9rem; color: var(--text-muted); }
+.clear-history-btn {
     background: none;
-    border: 1px solid rgba(239, 68, 68, 0.2);
+    border: 1px solid rgba(239, 68, 68, 0.3);
     color: #ef4444;
-    padding: 6px 14px;
-    border-radius: 10px;
+    padding: 4px 10px;
+    border-radius: 6px;
     cursor: pointer;
-    font-size: 0.85rem;
-    transition: background 0.2s;
+    font-size: 0.75rem;
 }
-.flush-cache-btn:hover { background: rgba(239, 68, 68, 0.06); }
-
-.scrolling-deck-body {
-    max-height: 280px;
-    overflow-y: auto;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    padding-right: 8px;
-}
-/* Scrollbar Styling styling */
-.scrolling-deck-body::-webkit-scrollbar { width: 5px; }
-.scrolling-deck-body::-webkit-scrollbar-thumb { background: var(--glass-border); border-radius: 10px; }
-
-.history-card-item {
-    background: rgba(255, 255, 255, 0.02);
-    border: 1px solid var(--glass-border);
-    padding: 14px 20px;
-    border-radius: 12px;
+.history-scroll-list { max-height: 260px; overflow-y: auto; display: flex; flex-direction: column; gap: 8px; }
+.history-item {
+    background: var(--key-bg);
+    border: 1px solid var(--border-color);
+    padding: 10px 14px;
+    border-radius: 6px;
     display: flex;
     justify-content: space-between;
-    align-items: center;
 }
-.h-expr { color: var(--text-muted); font-size: 1rem; }
-.h-res { color: var(--accent); font-size: 1.3rem; font-weight: 600; }
-
-/* Dashboard Adaptive Responsive Fallbacks */
-@media(max-width: 950px) {
-    .dashboard-container {
-        width: 100%;
-        max-width: 420px;
-        grid-template-columns: 1fr;
-        height: auto;
-    }
-    .sidebar { display: none; } /* Sidebar layout turns desktop focused optimized */
-}
+.history-item .expr { color: var(--text-muted); }
+.history-item .res { color: var(--accent-blue); font-weight: 600; }

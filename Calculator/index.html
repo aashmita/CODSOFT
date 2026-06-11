@@ -3,149 +3,146 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quantum Calc - Advanced Workspace</title>
+    <title>Professional Calculator Dashboard</title>
     <link rel="stylesheet" href="style.css">
 </head>
-<body class="theme-dark">
+<body class="dark-mode">
 
-    <div class="glow-orb orb-1"></div>
-    <div class="glow-orb orb-2"></div>
-
-    <div class="dashboard-container">
+    <div class="app-container">
         
         <aside class="sidebar">
-            <div class="brand">
-                <span class="logo-icon">🔮</span>
-                <h2>Quantum</h2>
+            <div class="sidebar-header">
+                <span class="app-icon">📊</span>
+                <h2>Workspace</h2>
             </div>
             
-            <nav class="nav-menu">
-                <button class="nav-btn active" id="tab-standard" onclick="switchMode('standard')">
-                    <span class="icon">🔢</span> <span class="lbl" data-en="Standard" data-hi="साधारण">Standard</span>
+            <nav class="sidebar-nav">
+                <button class="menu-btn active" id="btn-standard" onclick="changeTab('standard')">
+                    <span>🔢</span> <span class="lang-txt" data-en="Standard" data-hi="साधारण">Standard</span>
                 </button>
-                <button class="nav-btn" id="tab-scientific" onclick="switchMode('scientific')">
-                    <span class="icon">🔬</span> <span class="lbl" data-en="Scientific" data-hi="वैज्ञानिक">Scientific</span>
+                <button class="menu-btn" id="btn-scientific" onclick="changeTab('scientific')">
+                    <span>🔬</span> <span class="lang-txt" data-en="Scientific" data-hi="वैज्ञानिक">Scientific</span>
                 </button>
-                <button class="nav-btn" id="tab-unit" onclick="switchMode('unit')">
-                    <span class="icon">📐</span> <span class="lbl" data-en="Converter" data-hi="परिवर्तक">Converter</span>
+                <button class="menu-btn" id="btn-converter" onclick="changeTab('converter')">
+                    <span>📐</span> <span class="lang-txt" data-en="Converter" data-hi="परिवर्तक">Converter</span>
                 </button>
-                <button class="nav-btn" id="tab-history" onclick="switchMode('history')">
-                    <span class="icon">🕒</span> <span class="lbl" data-en="History" data-hi="इतिहास">History</span>
+                <button class="menu-btn" id="btn-history" onclick="changeTab('history')">
+                    <span>🕒</span> <span class="lang-txt" data-en="History" data-hi="इतिहास">History</span>
                 </button>
             </nav>
 
-            <div class="sidebar-footer">
+            <div class="sidebar-settings">
                 <div class="setting-row">
                     <span>🌍</span>
-                    <select id="languageSelect" onchange="changeLanguage()">
+                    <select id="langMenu" onchange="updateLanguage()">
                         <option value="en">English</option>
                         <option value="hi">हिंदी</option>
                     </select>
                 </div>
                 <div class="setting-row">
-                    <span>🎨</span>
-                    <select id="themeSelect" onchange="changeTheme()">
-                        <option value="theme-dark">Abyss Dark</option>
-                        <option value="theme-light">Glass Light</option>
-                        <option value="theme-neon">Cyber Neon</option>
+                    <span>🌓</span>
+                    <select id="themeMenu" onchange="updateTheme()">
+                        <option value="dark">Dark Mode</option>
+                        <option value="light">Light Mode</option>
                     </select>
+                </div>
+                <div class="setting-row check-row">
+                    <input type="checkbox" id="audioToggle">
+                    <label for="audioToggle" data-en="Read Aloud" data-hi="बोलकर पढ़ें">Read Aloud</label>
                 </div>
             </div>
         </aside>
 
-        <main class="main-workspace">
+        <main class="main-content">
             
-            <header class="workspace-header">
-                <div class="mode-title-area">
-                    <h1 id="workspace-title" data-en="Standard Deck" data-hi="साधारण डेक">Standard Deck</h1>
-                    <p class="sub-status" data-en="Ready for expressions" data-hi="समीकरण के लिए तैयार">Ready for expressions</p>
+            <header class="content-header">
+                <div class="title-block">
+                    <h1 id="view-title" data-en="Standard Mode" data-hi="साधारण मोड">Standard Mode</h1>
+                    <p id="app-status" data-en="Ready" data-hi="तैयार">Ready</p>
                 </div>
-                <button id="voiceBtn" class="action-trigger-btn" onclick="startVoiceRecognition()" title="Voice Activation">
-                    <span class="mic-wave">🎤</span>
-                </button>
+                <button id="mic-btn" class="voice-trigger" onclick="handleVoiceInput()" title="Voice Input">🎤</button>
             </header>
 
-            <section class="display-canvas">
-                <div id="expression-preview" class="expr-line"></div>
-                <div class="display-input-wrap">
-                    <input type="text" id="main-display" value="0" readonly>
-                    <button class="inline-copy-btn" onclick="copyResult()" title="Copy Code">📋</button>
+            <section class="display-section">
+                <div id="preview-screen" class="preview-text"></div>
+                <div class="input-row">
+                    <input type="text" id="calc-screen" value="0" readonly>
+                    <button class="copy-btn" onclick="copyToClipboard()" title="Copy Value">📋</button>
                 </div>
             </section>
 
-            <section id="calc-pad" class="pad-layout-grid">
-                <button class="btn sci-btn" onclick="inputSci('sin')">sin</button>
-                <button class="btn sci-btn" onclick="inputSci('cos')">cos</button>
-                <button class="btn sci-btn" onclick="inputSci('tan')">tan</button>
-                <button class="btn sci-btn" onclick="inputSci('sqrt')">√</button>
-                <button class="btn sci-btn" onclick="inputSci('log')">log</button>
-                <button class="btn sci-btn" onclick="inputSci('ln')">ln</button>
-                <button class="btn sci-btn" onclick="appendValue('**2')">x²</button>
-                <button class="btn sci-btn" onclick="appendValue('π')">π</button>
+            <section id="math-grid" class="keypad-grid">
+                <button class="btn btn-sci" onclick="addSciOp('sin')">sin</button>
+                <button class="btn btn-sci" onclick="addSciOp('cos')">cos</button>
+                <button class="btn btn-sci" onclick="addSciOp('tan')">tan</button>
+                <button class="btn btn-sci" onclick="addSciOp('sqrt')">√</button>
+                <button class="btn btn-sci" onclick="addSciOp('log')">log</button>
+                <button class="btn btn-sci" onclick="addSciOp('ln')">ln</button>
+                <button class="btn btn-sci" onclick="appendInput('**2', 'squared')">x²</button>
+                <button class="btn btn-sci" onclick="appendInput('Math.PI', 'pi')">π</button>
 
-                <button class="btn functional-btn" onclick="clearDisplay()">AC</button>
-                <button class="btn functional-btn" onclick="appendValue('(')">(</button>
-                <button class="btn functional-btn" onclick="appendValue(')')">)</button>
-                <button class="btn operator-btn" onclick="backspace()">⌫</button>
+                <button class="btn btn-clear" onclick="clearAll()">AC</button>
+                <button class="btn btn-func" onclick="appendInput('(', 'open bracket')">(</button>
+                <button class="btn btn-func" onclick="appendInput(')', 'close bracket')">)</button>
+                <button class="btn btn-operator" onclick="dropLastChar()">⌫</button>
 
-                <button class="btn numeric-btn" onclick="appendValue('7')">7</button>
-                <button class="btn numeric-btn" onclick="appendValue('8')">8</button>
-                <button class="btn numeric-btn" onclick="appendValue('9')">9</button>
-                <button class="btn operator-btn" onclick="appendValue('/')">÷</button>
+                <button class="btn btn-num" onclick="appendInput('7', '7')">7</button>
+                <button class="btn btn-num" onclick="appendInput('8', '8')">8</button>
+                <button class="btn btn-num" onclick="appendInput('9', '9')">9</button>
+                <button class="btn btn-operator" onclick="appendInput('/', 'divided by')">÷</button>
 
-                <button class="btn numeric-btn" onclick="appendValue('4')">4</button>
-                <button class="btn numeric-btn" onclick="appendValue('5')">5</button>
-                <button class="btn numeric-btn" onclick="appendValue('6')">6</button>
-                <button class="btn operator-btn" onclick="appendValue('*')">×</button>
+                <button class="btn btn-num" onclick="appendInput('4', '4')">4</button>
+                <button class="btn btn-num" onclick="appendInput('5', '5')">5</button>
+                <button class="btn btn-num" onclick="appendInput('6', '6')">6</button>
+                <button class="btn btn-operator" onclick="appendInput('*', 'multiplied by')">×</button>
 
-                <button class="btn numeric-btn" onclick="appendValue('1')">1</button>
-                <button class="btn numeric-btn" onclick="appendValue('2')">2</button>
-                <button class="btn numeric-btn" onclick="appendValue('3')">3</button>
-                <button class="btn operator-btn" onclick="appendValue('-')">−</button>
+                <button class="btn btn-num" onclick="appendInput('1', '1')">1</button>
+                <button class="btn btn-num" onclick="appendInput('2', '2')">2</button>
+                <button class="btn btn-num" onclick="appendInput('3', '3')">3</button>
+                <button class="btn btn-operator" onclick="appendInput('-', 'minus')">−</button>
 
-                <button class="btn functional-btn" onclick="toggleSign()">+/-</button>
-                <button class="btn numeric-btn" onclick="appendValue('0')">0</button>
-                <button class="btn numeric-btn" onclick="appendValue('.')">.</button>
-                <button class="btn operator-btn" onclick="appendValue('%')">%</button>
+                <button class="btn btn-func" onclick="negateInput()">+/-</button>
+                <button class="btn btn-num" onclick="appendInput('0', '0')">0</button>
+                <button class="btn btn-num" onclick="appendInput('.', 'point')">.</button>
+                <button class="btn btn-operator" onclick="appendInput('+', 'plus')">+</button>
                 
-                <button class="btn execute-btn" onclick="calculate()" style="grid-column: span 4;">=</button>
+                <button class="btn btn-equals" onclick="evaluateExpression()" style="grid-column: span 4;">=</button>
             </section>
 
-            <section id="unit-pad" class="dashboard-subview hidden">
-                <div class="form-card">
-                    <div class="input-field-block">
-                        <label data-en="Dimension Category" data-hi="आयाम श्रेणी">Dimension Category</label>
-                        <select id="unitCategory" onchange="updateUnitOptions()">
+            <section id="converter-panel" class="sub-panel hidden">
+                <div class="converter-box">
+                    <div class="form-group">
+                        <label data-en="Measurement Category" data-hi="मापन श्रेणी">Measurement Category</label>
+                        <select id="unitType" onchange="setupUnitDropdowns()">
                             <option value="area" data-en="Area (Acres / m²)" data-hi="क्षेत्रफल (एकड़ / वर्ग मीटर)">Area (Acres / m²)</option>
                             <option value="length" data-en="Length (km / miles)" data-hi="लंबाई (किमी / मील)">Length (km / miles)</option>
                             <option value="temp" data-en="Temperature (°C / °F)" data-hi="तापमान (°C / °F)">Temperature (°C / °F)</option>
                         </select>
                     </div>
                     
-                    <div class="split-input-row">
-                        <div class="input-field-block">
-                            <label data-en="Source Value" data-hi="स्रोत मान">Source Value</label>
-                            <input type="number" id="unitInput" value="1" oninput="performUnitConversion()">
-                            <select id="unitFrom" onchange="performUnitConversion()"></select>
+                    <div class="io-split-row">
+                        <div class="form-group">
+                            <label data-en="From" data-hi="से">From</label>
+                            <input type="number" id="fromAmount" value="1" oninput="runConversion()">
+                            <select id="fromUnit" onchange="runConversion()"></select>
                         </div>
-                        <div class="conversion-vector">⚡</div>
-                        <div class="input-field-block">
-                            <label data-en="Target Output" data-hi="लक्षित परिणाम">Target Output</label>
-                            <div class="read-only-result-plate" id="unitOutput">0.00</div>
-                            <select id="unitTo" onchange="performUnitConversion()"></select>
+                        <div class="swap-icon">⇌</div>
+                        <div class="form-group">
+                            <label data-en="To Output" data-hi="परिणाम">To Output</label>
+                            <div class="static-result" id="toAmount">0.00</div>
+                            <select id="toUnit" onchange="runConversion()"></select>
                         </div>
                     </div>
                 </div>
             </section>
 
-            <section id="history-pad" class="dashboard-subview hidden">
-                <div class="history-deck-frame">
-                    <div class="deck-top-actions">
-                        <h4 data-en="Previous Calculations" data-hi="पिछले समीकरण">Previous Calculations</h4>
-                        <button class="flush-cache-btn" onclick="clearHistory()" data-en="Flush Records" data-hi="रिकॉर्ड हटाएं">Flush Records</button>
+            <section id="history-panel" class="sub-panel hidden">
+                <div class="history-wrapper">
+                    <div class="history-header">
+                        <h4 data-en="Calculations History" data-hi="इतिहास रिकॉर्ड">Calculations History</h4>
+                        <button class="clear-history-btn" onclick="flushLogs()" data-en="Clear All" data-hi="सब साफ़ करें">Clear All</button>
                     </div>
-                    <div id="history-list" class="scrolling-deck-body">
-                        </div>
+                    <div id="history-container" class="history-scroll-list"></div>
                 </div>
             </section>
 

@@ -1,243 +1,279 @@
-// Global Application State Properties Cache
-let currentInput = "";
-let currentLanguage = "en";
-let calculationHistory = [];
+// Application Memory Arrays Module Elements Tracking
+let activeInputString = "";
+let selectedLanguage = "en";
+let historicalLogs = [];
 
-const unitConversions = {
+const mathConversionMatrix = {
     area: {
         units: { acres: "Acres", sqm: "Square Metres" },
-        convert: (val, from, to) => (from === to) ? val : (from === "acres" ? val * 4046.8564 : val / 4046.8564)
+        convert: (v, f, t) => f === t ? v : (f === "acres" ? v * 4046.856 : v / 4046.856)
     },
     length: {
         units: { km: "Kilometers", miles: "Miles" },
-        convert: (val, from, to) => (from === to) ? val : (from === "km" ? val * 0.621371 : val / 0.621371)
+        convert: (v, f, t) => f === t ? v : (f === "km" ? v * 0.621371 : v / 0.621371)
     },
     temp: {
         units: { c: "Celsius", f: "Fahrenheit" },
-        convert: (val, from, to) => (from === to) ? val : (from === "c" ? (val * 9/5) + 32 : (val - 32) * 5/9)
+        convert: (v, f, t) => f === t ? v : (f === "c" ? (v * 9/5) + 32 : (v - 32) * 5/9)
     }
 };
 
-// Workspace Panel Navigation Module Core Changer
-function switchMode(targetMode) {
-    const container = document.querySelector('.dashboard-container');
+// Text to Speech Voice Reader Engine Hook
+function runAudioSpeechFeedback(phrase) {
+    const speechActive = document.getElementById('audioToggle').checked;
+    if (!speechActive) return;
     
-    // Clear functional UI states cleanly
-    container.classList.remove('mode-standard', 'mode-scientific');
-    document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
-    
-    // View element visibilities toggler
-    document.getElementById('calc-pad').classList.add('hidden');
-    document.getElementById('unit-pad').classList.add('hidden');
-    document.getElementById('history-pad').classList.add('hidden');
+    // Stop any ongoing announcement before starting a new one
+    window.speechSynthesis.cancel();
+    const voiceAnnouncer = new SpeechSynthesisUtterance(phrase);
+    voiceAnnouncer.lang = (selectedLanguage === 'hi') ? 'hi-IN' : 'en-US';
+    voiceAnnouncer.rate = 1.1;
+    window.speechSynthesis.speak(voiceAnnouncer);
+}
 
-    document.getElementById(`tab-${targetMode}`).classList.add('active');
-
-    // Headers translation mapping elements updates
-    const titleHeader = document.getElementById('workspace-title');
+// Swaps functional working sub-views containers panels tabs
+function changeTab(tabName) {
+    const mainBox = document.querySelector('.app-container');
     
-    if (targetMode === 'standard') {
-        container.classList.add('mode-standard');
-        document.getElementById('calc-pad').classList.remove('hidden');
-        titleHeader.setAttribute('data-en', 'Standard Deck');
-        titleHeader.setAttribute('data-hi', 'साधारण डेक');
-    } else if (targetMode === 'scientific') {
-        container.classList.add('mode-scientific');
-        document.getElementById('calc-pad').classList.remove('hidden');
-        titleHeader.setAttribute('data-en', 'Scientific Engine');
-        titleHeader.setAttribute('data-hi', 'वैज्ञानिक इंजन');
-    } else if (targetMode === 'unit') {
-        document.getElementById('unit-pad').classList.remove('hidden');
-        titleHeader.setAttribute('data-en', 'Unit Cross Conversion');
-        titleHeader.setAttribute('data-hi', 'इकाई क्रॉस परिवर्तन');
-        updateUnitOptions();
-    } else if (targetMode === 'history') {
-        document.getElementById('history-pad').classList.remove('hidden');
-        titleHeader.setAttribute('data-en', 'Analytical Logs');
-        titleHeader.setAttribute('data-hi', 'विश्लेषणात्मक लॉग');
-        renderHistory();
+    mainBox.classList.remove('mode-standard', 'mode-scientific');
+    document.querySelectorAll('.menu-btn').forEach(btn => btn.classList.remove('active'));
+    
+    document.getElementById('math-grid').classList.add('hidden');
+    document.getElementById('converter-panel').classList.add('hidden');
+    document.getElementById('history-panel').classList.add('hidden');
+
+    document.getElementById(`btn-${tabName}`).classList.add('active');
+    const headerTitle = document.getElementById('view-title');
+
+    if (tabName === 'standard') {
+        mainBox.classList.add('mode-standard');
+        document.getElementById('math-grid').classList.remove('hidden');
+        headerTitle.setAttribute('data-en', 'Standard Mode');
+        headerTitle.setAttribute('data-hi', 'साधारण मोड');
+    } else if (tabName === 'scientific') {
+        mainBox.classList.add('mode-scientific');
+        document.getElementById('math-grid').classList.remove('hidden');
+        headerTitle.setAttribute('data-en', 'Scientific Engine');
+        headerTitle.setAttribute('data-hi', 'वैज्ञानिक इंजन');
+    } else if (tabName === 'converter') {
+        document.getElementById('converter-panel').classList.remove('hidden');
+        headerTitle.setAttribute('data-en', 'Unit Converter');
+        headerTitle.setAttribute('data-hi', 'इकाई परिवर्तक');
+        setupUnitDropdowns();
+    } else if (tabName === 'history') {
+        document.getElementById('history-panel').classList.remove('hidden');
+        headerTitle.setAttribute('data-en', 'Calculations History');
+        headerTitle.setAttribute('data-hi', 'इतिहास रिकॉर्ड');
+        buildHistoryListView();
     }
     
-    // Trigger localization map re-sync adjustments
-    changeLanguage();
+    updateLanguage();
 }
 
-// Basic Inputs Core Execution Blocks 
-function appendValue(val) {
-    if (document.getElementById('main-display').value === "Error") clearDisplay();
-    currentInput += val;
-    updateDisplay();
-}
-
-function clearDisplay() {
-    currentInput = "";
-    document.getElementById('expression-preview').innerText = "";
-    document.getElementById('main-display').value = "0";
-}
-
-function backspace() {
-    currentInput = currentInput.slice(0, -1);
-    updateDisplay();
-}
-
-function toggleSign() {
-    if (!currentInput) return;
-    currentInput = currentInput.startsWith('-') ? currentInput.slice(1) : '-' + currentInput;
-    updateDisplay();
-}
-
-function updateDisplay() {
-    const mainDisp = document.getElementById('main-display');
-    const previewDisp = document.getElementById('expression-preview');
+// Custom Key Input Sequences Logic Processing Block
+function appendInput(val, audioLabel) {
+    if (document.getElementById('calc-screen').value === "Error") clearAll();
+    activeInputString += val;
+    refreshScreenElements();
     
-    mainDisp.value = currentInput.replace(/\*/g, '×').replace(/\//g, '÷') || "0";
+    if (audioLabel) {
+        runAudioSpeechFeedback(audioLabel);
+    }
+}
+
+function clearAll() {
+    activeInputString = "";
+    document.getElementById('preview-screen').innerText = "";
+    document.getElementById('calc-screen').value = "0";
+    runAudioSpeechFeedback(selectedLanguage === 'hi' ? "साफ़" : "Clear");
+}
+
+function dropLastChar() {
+    activeInputString = activeInputString.slice(0, -1);
+    refreshScreenElements();
+    runAudioSpeechFeedback(selectedLanguage === 'hi' ? "हटाया" : "Backspace");
+}
+
+function negateInput() {
+    if (!activeInputString) return;
+    activeInputString = activeInputString.startsWith('-') ? activeInputString.slice(1) : '-' + activeInputString;
+    refreshScreenElements();
+}
+
+function addSciOp(type) {
+    activeInputString += `Math.${type}(`;
+    refreshScreenElements();
+    runAudioSpeechFeedback(type);
+}
+
+// UI Refresh Loop
+function refreshScreenElements() {
+    const monitor = document.getElementById('calc-screen');
+    const preMonitor = document.getElementById('preview-screen');
     
-    // Continuous Real-Time Preview evaluation execution block 
-    if (currentInput && !['+', '-', '*', '/', '%', '.'].includes(currentInput.slice(-1))) {
+    monitor.value = activeInputString.replace(/\*/g, '×').replace(/\//g, '÷') || "0";
+    
+    if (activeInputString && !['+', '-', '*', '/', '.'].includes(activeInputString.slice(-1))) {
         try {
-            let runningVal = new Function(`return ${currentInput.replace(/π/g, 'Math.PI')}`)();
-            if (isFinite(runningVal) && runningVal !== undefined && String(runningVal) !== currentInput) {
-                previewDisp.innerText = "= " + runningVal;
-            } else { previewDisp.innerText = ""; }
-        } catch(e) { previewDisp.innerText = ""; }
-    } else { previewDisp.innerText = ""; }
+            let evalOutput = new Function(`return ${activeInputString}`)();
+            if (isFinite(evalOutput) && evalOutput !== undefined && String(evalOutput) !== activeInputString) {
+                preMonitor.innerText = "= " + evalOutput;
+            } else { preMonitor.innerText = ""; }
+        } catch(err) { preMonitor.innerText = ""; }
+    } else { preMonitor.innerText = ""; }
 }
 
-function inputSci(type) {
-    currentInput += `Math.${type}(`;
-    updateDisplay();
-}
-
-function calculate() {
-    if (!currentInput) return;
-    const mainDisp = document.getElementById('main-display');
+function evaluateExpression() {
+    if (!activeInputString) return;
+    const monitor = document.getElementById('calc-screen');
     try {
-        let cleanExpr = currentInput.replace(/π/g, 'Math.PI').replace(/(\d+)%/g, "($1/100)");
-        let outputEval = new Function(`return ${cleanExpr}`)();
+        let outputVal = new Function(`return ${activeInputString}`)();
         
-        if (!isFinite(outputEval)) { mainDisp.value = "Error"; return; }
+        if (!isFinite(outputVal)) { monitor.value = "Error"; return; }
 
-        calculationHistory.unshift({ 
-            expr: currentInput.replace(/\*/g, '×').replace(/\//g, '÷'), 
-            result: outputEval 
+        historicalLogs.unshift({ 
+            expr: activeInputString.replace(/\*/g, '×').replace(/\//g, '÷'), 
+            result: outputVal 
         });
         
-        currentInput = String(outputEval);
-        mainDisp.value = outputEval;
-        document.getElementById('expression-preview').innerText = "";
-    } catch (err) { mainDisp.value = "Error"; }
+        activeInputString = String(outputVal);
+        monitor.value = outputVal;
+        document.getElementById('preview-screen').innerText = "";
+        
+        runAudioSpeechFeedback(`${selectedLanguage === 'hi' ? 'बराबर है' : 'equals'} ${outputVal}`);
+    } catch (e) { monitor.value = "Error"; }
 }
 
-// Multi Theme Framework Switcher
-function changeTheme() {
-    document.body.className = document.getElementById('themeSelect').value;
+// Clean Theme Profile Swapper Mapping
+function updateTheme() {
+    const chosenTheme = document.getElementById('themeMenu').value;
+    document.body.className = (chosenTheme === 'light') ? "light-mode" : "dark-mode";
 }
 
-// Global Two-way Text Translator Localization Module Engine
-function changeLanguage() {
-    currentLanguage = document.getElementById('languageSelect').value;
-    document.querySelectorAll('[data-en]').forEach(el => {
-        el.innerText = el.getAttribute(`data-${currentLanguage}`);
+function updateLanguage() {
+    selectedLanguage = document.getElementById('langMenu').value;
+    document.querySelectorAll('[data-en]').forEach(node => {
+        node.innerText = node.getAttribute(`data-${selectedLanguage}`);
     });
 }
 
-// Conversion Calculation Panel Drivers
-function updateUnitOptions() {
-    const category = document.getElementById('unitCategory').value;
-    const fromSelect = document.getElementById('unitFrom');
-    const toSelect = document.getElementById('unitTo');
+// Unit Converters Block Logic
+function setupUnitDropdowns() {
+    const cat = document.getElementById('unitType').value;
+    const fSelect = document.getElementById('fromUnit');
+    const tSelect = document.getElementById('toUnit');
     
-    fromSelect.innerHTML = ""; toSelect.innerHTML = "";
-    
-    Object.entries(unitConversions[category].units).forEach(([key, val]) => {
-        fromSelect.options.add(new Option(val, key));
-        toSelect.options.add(new Option(val, key));
+    fSelect.innerHTML = ""; tSelect.innerHTML = "";
+    Object.entries(mathConversionMatrix[cat].units).forEach(([k, v]) => {
+        fSelect.options.add(new Option(v, k));
+        tSelect.options.add(new Option(v, k));
     });
-    if (toSelect.options.length > 1) toSelect.selectedIndex = 1;
-    performUnitConversion();
+    if (tSelect.options.length > 1) tSelect.selectedIndex = 1;
+    runConversion();
 }
 
-function performUnitConversion() {
-    const category = document.getElementById('unitCategory').value;
-    const fromUnit = document.getElementById('unitFrom').value;
-    const toUnit = document.getElementById('unitTo').value;
-    const valueInput = parseFloat(document.getElementById('unitInput').value) || 0;
+function runConversion() {
+    const cat = document.getElementById('unitType').value;
+    const fUnit = document.getElementById('fromUnit').value;
+    const tUnit = document.getElementById('toUnit').value;
+    const valIn = parseFloat(document.getElementById('fromAmount').value) || 0;
     
-    const outputValue = unitConversions[category].convert(valueInput, fromUnit, toUnit);
-    document.getElementById('unitOutput').innerText = outputValue.toLocaleString(undefined, { maximumFractionDigits: 5 });
+    const outputRes = mathConversionMatrix[cat].convert(valIn, fUnit, tUnit);
+    document.getElementById('toAmount').innerText = outputRes.toLocaleString(undefined, { maximumFractionDigits: 4 });
 }
 
-// Persistent Calculation Deck Loggers Rendering
-function renderHistory() {
-    const historyList = document.getElementById('history-list');
-    historyList.innerHTML = "";
+// Dynamic Calculation Logs View Builders Node Items
+function buildHistoryListView() {
+    const frame = document.getElementById('history-container');
+    frame.innerHTML = "";
     
-    if (!calculationHistory.length) {
-        historyList.innerHTML = `<div style="text-align:center;color:var(--text-muted);padding-top:20px;">${currentLanguage === 'hi' ? 'कोई इतिहास उपलब्ध नहीं है।' : 'No logs recorded.'}</div>`;
+    if (!historicalLogs.length) {
+        frame.innerHTML = `<div style="text-align:center;color:var(--text-muted);padding-top:15px;">${selectedLanguage === 'hi' ? 'कोई इतिहास रिकॉर्ड नहीं है।' : 'No historical logs found.'}</div>`;
         return;
     }
-    calculationHistory.forEach(item => {
-        const itemCard = document.createElement('div');
-        itemCard.className = "history-card-item";
-        itemCard.innerHTML = `<span class="h-expr">${item.expr}</span><span class="h-res">=${item.result}</span>`;
-        historyList.appendChild(itemCard);
+    historicalLogs.forEach(entry => {
+        const row = document.createElement('div');
+        row.className = "history-item";
+        row.innerHTML = `<span class="expr">${entry.expr}</span><span class="res">=${entry.result}</span>`;
+        frame.appendChild(row);
     });
 }
+function flushLogs() { historicalLogs = []; buildHistoryListView(); }
 
-function clearHistory() { calculationHistory = []; renderHistory(); }
-
-function copyResult() {
-    navigator.clipboard.writeText(document.getElementById('main-display').value);
+function copyToClipboard() {
+    navigator.clipboard.writeText(document.getElementById('calc-screen').value);
 }
 
-// Hardware Physical Key Tracking Mapping Listeners
-document.addEventListener('keydown', (e) => {
-    if (!document.getElementById('calc-pad').classList.contains('hidden')) {
-        if (e.key >= '0' && e.key <= '9') appendValue(e.key);
-        else if (e.key === '.') appendValue('.');
-        else if (e.key === '+') appendValue('+');
-        else if (e.key === '-') appendValue('-');
-        else if (e.key === '*') appendValue('*');
-        else if (e.key === '/') appendValue('/');
-        else if (e.key === '%') appendValue('%');
-        else if (e.key === 'Backspace') backspace();
-        else if (e.key === 'Escape') clearDisplay();
-        else if (e.key === 'Enter' || e.key === '=') { e.preventDefault(); calculate(); }
+// Hardware Keys Mapping Events Listeners
+document.addEventListener('keydown', (evt) => {
+    if (!document.getElementById('math-grid').classList.contains('hidden')) {
+        if (evt.key >= '0' && evt.key <= '9') appendInput(evt.key, evt.key);
+        else if (evt.key === '.') appendInput('.', 'point');
+        else if (evt.key === '+') appendInput('+', 'plus');
+        else if (evt.key === '-') appendInput('-', 'minus');
+        else if (evt.key === '*') appendInput('*', 'multiplied by');
+        else if (evt.key === '/') appendInput('/', 'divided by');
+        else if (evt.key === 'Backspace') dropLastChar();
+        else if (evt.key === 'Escape') clearAll();
+        else if (evt.key === 'Enter' || evt.key === '=') { evt.preventDefault(); evaluateExpression(); }
     }
 });
 
-// HTML5 Web Speech Dictation Parsing Matrix Module Engine
-function startVoiceRecognition() {
-    const WebKitRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
-    if (!WebKitRecognition) return alert("Web Dictation features are unsupported on this client.");
+// REAL-TIME Web Audio Voice Dictation Streaming Processing Loop Interface Engine
+function handleVoiceInput() {
+    const SpeechAPI = window.SpeechRecognition || window.webkitSpeechRecognition;
+    if (!SpeechAPI) return alert("Web Audio Speech Dictation features are unsupported on this browser platform version.");
     
-    const contextRecognizer = new WebKitRecognition();
-    contextRecognizer.lang = (currentLanguage === 'hi') ? 'hi-IN' : 'en-US';
+    const processorInstance = new SpeechAPI();
+    // Enable continuous tracking so intermediate results stream actively in real time
+    processorInstance.continuous = true;
+    processorInstance.interimResults = true;
+    processorInstance.lang = (selectedLanguage === 'hi') ? 'hi-IN' : 'en-US';
     
-    const speechMicIndicator = document.getElementById('voiceBtn');
-    speechMicIndicator.style.background = "rgba(239, 68, 68, 0.2)";
+    const statusMsg = document.getElementById('app-status');
+    const previewBox = document.getElementById('preview-screen');
+    const micIndicator = document.getElementById('mic-btn');
     
-    contextRecognizer.start();
+    statusMsg.innerText = (selectedLanguage === 'hi') ? "सुन रहा हूँ... बोलिए" : "Listening... Speak now";
+    statusMsg.style.color = "#ef4444";
+    micIndicator.style.background = "rgba(239, 68, 68, 0.15)";
     
-    contextRecognizer.onresult = (e) => {
-        let transcriptString = e.results[0][0].transcript.toLowerCase();
+    processorInstance.start();
+    
+    processorInstance.onresult = (event) => {
+        let liveTranscript = "";
+        for (let i = event.resultIndex; i < event.results.length; ++i) {
+            liveTranscript += event.results[i][0].transcript;
+        }
         
-        // Match mathematical phonetics context patterns
-        let mathematicalExpression = transcriptString
+        // DISPLAY THE EXACT INPUT WORDS IN REAL TIME INSIDE PREVIEW FRAME
+        previewBox.innerText = `[Live Voice]: "${liveTranscript}"`;
+        
+        // Clean phonetics text syntax string characters strings maps
+        let filteredMathFormula = liveTranscript.toLowerCase()
             .replace(/plus|and|और|प्लस|जोड़/g, '+')
             .replace(/minus|घटाओ|माइनस/g, '-')
             .replace(/times|into|multiplied by|गुना|गुणा/g, '*')
             .replace(/divided by|divide|भाग/g, '/')
-            .replace(/[^0-9\+\-\*\/\%\(\)\.]/g, '');
+            .replace(/[^0-9\+\-\*\/\(\)\.]/g, '');
             
-        if (mathematicalExpression) {
-            currentInput = mathematicalExpression;
-            updateDisplay();
-            calculate();
+        if (filteredMathFormula && event.results[event.results.length - 1].isFinal) {
+            activeInputString = filteredMathFormula;
+            refreshScreenElements();
+            // Evaluate right after sentence is finalized
+            setTimeout(() => {
+                evaluateExpression();
+                processorInstance.stop();
+            }, 500);
         }
     };
-    contextRecognizer.onend = () => speechMicIndicator.style.background = "var(--key-num)";
+    
+    processorInstance.onend = () => {
+        statusMsg.style.color = "var(--text-muted)";
+        statusMsg.innerText = (selectedLanguage === 'hi') ? "तैयार" : "Ready";
+        micIndicator.style.background = "var(--key-bg)";
+    };
 }
 
-// Application Init Setup Launcher
-switchMode('standard');
+// Bootstrap Initialization Standard Interface
+changeTab('standard');
