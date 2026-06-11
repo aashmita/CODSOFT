@@ -1,0 +1,77 @@
+/* Core Page Layout styling */
+body {
+    background-color: #f0f2f5;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+/* Calculator Body - Designed exactly from your image */
+.calculator {
+    background-color: #2196F3; /* Exact match bright blue background */
+    width: 340px;
+    padding: 25px;
+    border-radius: 30px; /* Clean rounded corners matching image */
+    box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* Display Screen */
+#display {
+    width: 100%;
+    height: 70px;
+    background-color: #EBF3F9; /* Off-white display background */
+    border: none;
+    border-radius: 8px;
+    margin-bottom: 25px;
+    font-size: 2.2rem;
+    text-align: right;
+    padding-right: 15px;
+    box-sizing: border-box;
+    color: #111111;
+    font-weight: bold;
+}
+
+/* 4x4 Grid Setup for Buttons layout */
+.buttons {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px; /* Spacing between the square button grid */
+}
+
+/* Base button properties */
+.btn {
+    background-color: #1565C0; /* Darker blue button fill */
+    color: #FFFFFF;
+    border: none;
+    font-size: 1.8rem;
+    padding: 18px 0;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: transform 0.1s ease, background-color 0.2s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 500;
+}
+
+/* Hover & Active Feedback Effects */
+.btn:hover {
+    background-color: #0D47A1;
+}
+
+.btn:active {
+    transform: scale(0.95);
+}
+
+/* Emergency Utility Clear Button layout */
+.btn.clear {
+    background-color: #e53935;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+.btn.clear:hover {
+    background-color: #b71c1c;
+}
