@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
     
-    // --- 1. Mobile Menu Hamburger Toggle Logic Controller ---
+    // --- 1. Mobile Menu Hamburger Overlap Logic ---
     const mobileToggle = document.getElementById("mobile-toggle");
     const navMenu = document.getElementById("nav-menu");
     const navLinks = document.querySelectorAll(".nav-link");
@@ -11,7 +11,6 @@ document.addEventListener("DOMContentLoaded", () => {
             navMenu.classList.toggle("open");
         });
 
-        // Close mobile overlay window instantly on selecting links items components
         navLinks.forEach(link => {
             link.addEventListener("click", () => {
                 mobileToggle.classList.remove("active");
@@ -20,10 +19,10 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // --- 2. Floating Utilities Back To Top Handling ---
+    // --- 2. Floating Action Back To Top Controller ---
     const backToTopBtn = document.getElementById("backToTopBtn");
     window.addEventListener("scroll", () => {
-        if (window.scrollY > 400) {
+        if (window.scrollY > 500) {
             backToTopBtn.style.display = "flex";
         } else {
             backToTopBtn.style.display = "none";
@@ -36,73 +35,92 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // --- 3. Scroll Reveal Engine Matrix Observer ---
+    // --- 3. Intersection Observer Scroll Reveal Engine ---
     const revealItems = document.querySelectorAll(".scroll-reveal");
     
     const revealObserver = new IntersectionObserver((entries, observer) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add("revealed");
-                
-                // If it contains performance stat numeric count items nodes, kick off animation sequence loops
-                const targetNum = entry.target.querySelector(".stat-number");
-                if (targetNum && !targetNum.classList.contains("counted")) {
-                    triggerCountUpAnimation(targetNum);
-                }
                 observer.unobserve(entry.target);
             }
         });
-    }, { threshold: 0.15 });
+    }, { threshold: 0.05 });
 
     revealItems.forEach(item => revealObserver.observe(item));
 
-    // --- 4. Stat Counter Increment Engine Component ---
-    function triggerCountUpAnimation(element) {
-        element.classList.add("counted");
-        const maxLimit = parseInt(element.getAttribute("data-target"), 10);
-        let startVal = 0;
-        const processDuration = 1500; // Animation running frame clock limits milliseconds tracking
-        const stepTime = Math.max(Math.floor(processDuration / maxLimit), 15);
+    // --- 4. NEW: DYNAMIC PATH RECOMENDATION ENGINE (QUIZ LOGIC) ---
+    const quizDatabase = {
+        Engineering: {
+            courses: "B.Tech CSE, Artificial Intelligence & Machine Learning, Data Science Infrastructure, Cyber Security",
+            universities: "Medi-Caps University, Chandigarh University, Parul University"
+        },
+        Management: {
+            courses: "Global Strategic MBA, BBA Core Excellence, FinTech Operations, Business Analytics systems",
+            universities: "NMIMS University, Avantika University, Chandigarh University"
+        },
+        Design: {
+            courses: "B.Des User Interface (UI/UX), Communication Design, Product Architecture Portfolio",
+            universities: "Avantika University, Parul University"
+        },
+        Medical: {
+            courses: "MBBS, Allied Health Sciences, Genetics Research Frameworks, Hospital Administration",
+            universities: "Medi-Caps University, AISECT University, LNCT University"
+        }
+    };
 
-        const counterInterval = setInterval(() => {
-            startVal += Math.ceil(maxLimit / 100); // Gradual step distribution increments
-            if (startVal >= maxLimit) {
-                element.innerText = maxLimit + "+";
-                clearInterval(counterInterval);
-            } else {
-                element.innerText = startVal;
+    const submitQuizBtn = document.getElementById("submitQuizBtn");
+    const quizResultPanel = document.getElementById("quizResultPanel");
+    const outCourses = document.getElementById("outCourses");
+    const outUniversities = document.getElementById("outUniversities");
+
+    if (submitQuizBtn) {
+        submitQuizBtn.addEventListener("click", () => {
+            // Find selected radio value
+            const selectedInterest = document.querySelector('input[name="interestGroup"]:checked');
+            
+            if (selectedInterest) {
+                const choice = selectedInterest.value;
+                const recommendation = quizDatabase[choice];
+
+                // Inject text elements data
+                outCourses.textContent = recommendation.courses;
+                outUniversities.textContent = recommendation.universities;
+
+                // Smoothly unhide dashboard visualization item
+                quizResultPanel.classList.remove("hidden");
+                
+                // Auto scroll down inside element metrics slightly for structural emphasis
+                quizResultPanel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
             }
-        }, stepTime);
+        });
     }
 
-    // --- 5. Interactive Form Handlers Capture Logic Block ---
+    // --- 5. Interactive Form Submission Handlers ---
     const consultationForm = document.getElementById("consultationForm");
     if (consultationForm) {
         consultationForm.addEventListener("submit", (event) => {
-            event.preventDefault(); // Stop standard browser page redirection reload sequences
+            event.preventDefault();
 
             const studentName = document.getElementById("userName").value;
-            const studentEmail = document.getElementById("userEmail").value;
             const chosenCourse = document.getElementById("userCourse").value;
 
-            // Simple student validation confirmation logging notification modal mockup rule
-            alert(`Thank you for contacting us, ${studentName}!\nOur career counseling expert will reach out to you at ${studentEmail} regarding the ${chosenCourse} pathway.`);
-            
+            alert(`Thank you for contacting us, ${studentName}!\nOur senior career counselor will call you shortly regarding your choice in the "${chosenCourse}" pathway.`);
             consultationForm.reset();
         });
     }
 
-    // --- 6. Active Nav Link Scroll Sync Matrix Hook ---
+    // --- 6. Active Nav Link Intersection Observer Sync ---
     const sectionBlocks = document.querySelectorAll("section[id]");
     window.addEventListener("scroll", () => {
-        let scrollYPos = window.scrollY;
+        let currentScroll = window.scrollY;
 
         sectionBlocks.forEach(currentSection => {
             const h = currentSection.offsetHeight;
-            const top = currentSection.offsetTop - 90;
+            const top = currentSection.offsetTop - 120;
             const id = currentSection.getAttribute("id");
 
-            if (scrollYPos > top && scrollYPos <= top + h) {
+            if (currentScroll > top && currentScroll <= top + h) {
                 document.querySelectorAll(".nav-menu a").forEach(node => {
                     node.classList.remove("active");
                     if (node.getAttribute("href") === `#${id}`) {
