@@ -1,453 +1,997 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
+<html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Career Crafters Global | Student Academic Advisory</title>
-    <link rel="stylesheet" href="style.css">
-    <!-- FontAwesome for clean, realistic social icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Career Crafters Global</title>
+
+<link rel="stylesheet" href="style.css">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
 </head>
+
 <body>
 
-    <!-- Navigation Bar -->
-    <header class="navbar">
-        <div class="nav-container">
-            <a href="#" class="logo-wrapper">
-                <!-- Using the layout structure based on image_d0d5c2.png -->
-                <img src="image_d0d5c2.png" alt="Career Crafters Global Logo" class="brand-logo-img">
-            </a>
-            
-            <div class="nav-right-actions">
-                <button id="themeToggleBtn" class="theme-toggle-btn" title="Switch Theme">
-                    <span class="theme-icon">🌙</span>
-                </button>
-                <button class="menu-toggle" id="mobile-toggle" aria-label="Toggle navigation">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </button>
-            </div>
+<!-- NAVBAR -->
 
-            <nav class="nav-menu" id="nav-menu">
-                <a href="#home" class="nav-link active">Home</a>
-                <a href="#about" class="nav-link">About Us</a>
-                <a href="#explorer" class="nav-link">Career Paths</a>
-                <a href="#quiz" class="nav-link">Path Finder</a>
-                <a href="#universities" class="nav-link">Partners</a>
-                <a href="#events" class="nav-link">Events</a>
-                <a href="#faqs" class="nav-link">FAQs</a>
-                <a href="#contact" class="nav-btn">Book Consultation</a>
-            </nav>
-        </div>
-    </header>
+<header class="header">
 
-    <!-- Hero Section -->
-    <section id="home" class="hero-section">
-        <div class="hero-container container">
-            <div class="hero-text">
-                <span class="hero-badge">Your Global Education Partner</span>
-                <h1>Plan Your International Academic Future</h1>
-                <p>We help students find the right universities, secure scholarships, navigate visa applications, and build rewarding global careers.</p>
-                <div class="hero-actions">
-                    <a href="https://docs.google.com/forms/d/e/1FAIpQLSerbXlvB9otoQtWvdtocMPUxuhUYWx8wsW3mQ5G--EEp_l4dA/viewform" target="_blank" class="btn btn-primary">Register Online Now</a>
-                    <a href="#quiz" class="btn btn-secondary">Take Path Quiz</a>
-                </div>
-            </div>
-            <div class="hero-image-box">
-                <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=600&q=80" alt="Students on Campus" class="hero-display-img">
-            </div>
-        </div>
-    </section>
+<nav class="navbar">
 
-    <!-- Metrics Strip -->
-    <section class="metrics-strip">
-        <div class="container metrics-grid">
-            <div class="metric-card">
-                <div class="metric-num">98%</div>
-                <div class="metric-lbl">Visa Success Rate</div>
-            </div>
-            <div class="metric-card">
-                <div class="metric-num">250+</div>
-                <div class="metric-lbl">Partner Universities</div>
-            </div>
-            <div class="metric-card">
-                <div class="metric-num">15 Cr+</div>
-                <div class="metric-lbl">Scholarships Secured</div>
-            </div>
-            <div class="metric-card">
-                <div class="metric-num">5000+</div>
-                <div class="metric-lbl">Happy Students</div>
-            </div>
-        </div>
-    </section>
+<div class="logo">
 
-    <!-- About Section -->
-    <section id="about" class="section-padding">
-        <div class="container grid-2 align-center">
-            <div class="about-image-wrapper">
-                <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=600&q=80" alt="Counseling Session" class="standard-img">
-            </div>
-            <div class="about-text">
-                <span class="sub-title">Who We Are</span>
-                <h2>Expert Guidance Built for Student Success</h2>
-                <p>Career Crafters Global simplifies the process of studying abroad and finding your ideal professional track. We connect your personal goals directly with trusted international institutions.</p>
-                <div class="about-features-list">
-                    <div class="feat-item">
-                        <div class="feat-icon">🎯</div>
-                        <div>
-                            <h4>Profile Mapping</h4>
-                            <p>We analyze your academic background and financial preferences to find matching options.</p>
-                        </div>
-                    </div>
-                    <div class="feat-item">
-                        <div class="feat-icon">📄</div>
-                        <div>
-                            <h4>Document Assistance</h4>
-                            <p>Complete support with statements of purpose, reference letters, and application paperwork.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+<img
+src="images/careercrafters-global.png"
+alt="Career Crafters Global Logo">
 
-    <!-- Career Path Explorer with explicit options -->
-    <section id="explorer" class="section-padding bg-light">
-        <div class="container">
-            <div class="text-center">
-                <span class="sub-title">Explore Opportunities</span>
-                <h2 class="section-title">Fields of Study & Career Options</h2>
-                <p class="section-subtitle-text">Discover specialized degree programs and the actual career outcomes available within each stream.</p>
-            </div>
-            
-            <div class="explorer-grid">
-                <!-- Engineering -->
-                <div class="explorer-card">
-                    <div class="card-header-block">
-                        <span class="card-icon">⚙️</span>
-                        <h3>Engineering & Tech</h3>
-                    </div>
-                    <div class="card-body-content">
-                        <h4>Popular Specializations:</h4>
-                        <p>Computer Science, AI & Machine Learning, Data Science, Cyber Security, Mechanical, Civil, and Biotech Engineering.</p>
-                        <h4>Future Career Paths:</h4>
-                        <p>Software Engineer, Data Analyst, Systems Architect, Cybersecurity Specialist, DevOps Engineer, Research Scientist.</p>
-                    </div>
-                </div>
+</div>
 
-                <!-- Management -->
-                <div class="explorer-card">
-                    <div class="card-header-block">
-                        <span class="card-icon">📈</span>
-                        <h3>Management & Business</h3>
-                    </div>
-                    <div class="card-body-content">
-                        <h4>Popular Specializations:</h4>
-                        <p>International Business, Global MBA, Finance & FinTech, Marketing Analytics, Supply Chain Management, Human Resources.</p>
-                        <h4>Future Career Paths:</h4>
-                        <p>Business Analyst, Financial Consultant, Product Manager, Marketing Strategist, HR Manager, Operations Lead.</p>
-                    </div>
-                </div>
+<ul class="nav-links" id="navLinks">
 
-                <!-- Law -->
-                <div class="explorer-card">
-                    <div class="card-header-block">
-                        <span class="card-icon">⚖️</span>
-                        <h3>Law & Judiciary</h3>
-                    </div>
-                    <div class="card-body-content">
-                        <h4>Popular Specializations:</h4>
-                        <p>BA LLB, BBA LLB, Corporate Law, Cyber Jurisprudence, Intellectual Property (IP) Law, International Relations.</p>
-                        <h4>Future Career Paths:</h4>
-                        <p>Corporate Legal Advisor, Cyber Law Consultant, IP Associate, Legal Analyst, Compliance Officer, Practicing Advocate.</p>
-                    </div>
-                </div>
+<li><a href="#home">Home</a></li>
 
-                <!-- Design -->
-                <div class="explorer-card">
-                    <div class="card-header-block">
-                        <span class="card-icon">🎨</span>
-                        <h3>Design & Media</h3>
-                    </div>
-                    <div class="card-body-content">
-                        <h4>Popular Specializations:</h4>
-                        <p>UI/UX Communication Design, Industrial Product Design, Graphic Design, Animation, Fashion & Interior Architecture.</p>
-                        <h4>Future Career Paths:</h4>
-                        <p>Interaction Designer, Product Stylist, UX Specialist, Art Director, Creative Content Developer, Brand Architect.</p>
-                    </div>
-                </div>
+<li><a href="#services">Services</a></li>
 
-                <!-- Medical -->
-                <div class="explorer-card">
-                    <div class="card-header-block">
-                        <span class="card-icon">🩺</span>
-                        <h3>Medical & Health</h3>
-                    </div>
-                    <div class="card-body-content">
-                        <h4>Popular Specializations:</h4>
-                        <p>MBBS, Allied Global Health, Biomedical Technology, Hospital Administration, Genetics, and Nursing Sciences.</p>
-                        <h4>Future Career Paths:</h4>
-                        <p>Medical Practitioner, Clinical Researcher, Healthcare Administrator, Bio-informatician, Lab Specialist.</p>
-                    </div>
-                </div>
+<li><a href="#paths">Career Paths</a></li>
 
-                <!-- Study Abroad -->
-                <div class="explorer-card">
-                    <div class="card-header-block">
-                        <span class="card-icon">✈️</span>
-                        <h3>Study Abroad Programs</h3>
-                    </div>
-                    <div class="card-body-content">
-                        <h4>Popular Streams:</h4>
-                        <p>International Degree Mapping, Credit Transfer Programs, Language Certifications, GRE/IELTS Preparations.</p>
-                        <h4>Future Career Paths:</h4>
-                        <p>Global Corporate Consultant, Cross-Border Project Manager, Academic Researcher, Multinational Operations Lead.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+<li><a href="#universities">Universities</a></li>
 
-    <!-- Quiz Module -->
-    <section id="quiz" class="section-padding">
-        <div class="container">
-            <div class="grid-2 align-center">
-                <div class="quiz-text">
-                    <span class="sub-title">Not Sure Where to Start?</span>
-                    <h2>Find Your Perfect Path</h2>
-                    <p>Select your primary area of interest below, and our interactive tool will instantly recommend relevant academic paths and target partner universities.</p>
-                </div>
-                
-                <div class="quiz-box">
-                    <h3>Select Your Primary Interest:</h3>
-                    <div class="quiz-options">
-                        <label class="quiz-option">
-                            <input type="radio" name="interestGroup" value="Engineering" checked>
-                            <span>Engineering & Technology</span>
-                        </label>
-                        <label class="quiz-option">
-                            <input type="radio" name="interestGroup" value="Management">
-                            <span>Business & Management</span>
-                        </label>
-                        <label class="quiz-option">
-                            <input type="radio" name="interestGroup" value="Design">
-                            <span>Design & Creative Media</span>
-                        </label>
-                        <label class="quiz-option">
-                            <input type="radio" name="interestGroup" value="Medical">
-                            <span>Medical & Health Sciences</span>
-                        </label>
-                    </div>
-                    
-                    <button id="submitQuizBtn" class="btn btn-primary btn-block">Show Recommendations</button>
-                    
-                    <div id="quizResultPanel" class="quiz-result hidden">
-                        <h4>Recommended Courses:</h4>
-                        <p id="outCourses">...</p>
-                        <h4>Suggested Universities:</h4>
-                        <p id="outUniversities">...</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+<li><a href="#events">Events</a></li>
 
-    <!-- Partner Universities Network Gallery -->
-    <section id="universities" class="section-padding bg-light">
-        <div class="container text-center">
-            <span class="sub-title">Our Network</span>
-            <h2 class="section-title">Partner Universities</h2>
-            <p class="section-subtitle-text">We process direct applications and scholarship pathways for top recognized global institutions.</p>
-            
-            <div class="universities-grid">
-                <!-- Realistic placeholder branding reflecting correct names -->
-                <div class="uni-card">
-                    <div class="uni-logo-bar">🏛️</div>
-                    <h4>Medi-Caps University</h4>
-                </div>
-                <div class="uni-card">
-                    <div class="uni-logo-bar">🏛️</div>
-                    <h4>Avantika University</h4>
-                </div>
-                <div class="uni-card">
-                    <div class="uni-logo-bar">🏛️</div>
-                    <h4>Chandigarh University</h4>
-                </div>
-                <div class="uni-card">
-                    <div class="uni-logo-bar">🏛️</div>
-                    <h4>Parul University</h4>
-                </div>
-                <div class="uni-card">
-                    <div class="uni-logo-bar">🏛️</div>
-                    <h4>AISECT University</h4>
-                </div>
-                <div class="uni-card">
-                    <div class="uni-logo-bar">🏛️</div>
-                    <h4>NMIMS University</h4>
-                </div>
-            </div>
-            
-            <div class="more-partners-tag">
-                <p>... and many more partner universities worldwide</p>
-            </div>
-        </div>
-    </section>
+<li><a href="#contact">Contact</a></li>
 
-    <!-- Events Timeline Section -->
-    <section id="events" class="section-padding">
-        <div class="container">
-            <div class="text-center">
-                <span class="sub-title">Stay Updated</span>
-                <h2 class="section-title">Upcoming & Past Events</h2>
-            </div>
-            
-            <div class="timeline">
-                <div class="timeline-item">
-                    <div class="tl-date">10 Nov 2026</div>
-                    <div class="tl-content">
-                        <h3>Mega Career Fair — Indore Chapter</h3>
-                        <p class="venue">📍 Venue: Radisson Blu Hotel, Indore</p>
-                        <p>Interact directly with premium institution experts and complete spot profile assessments.</p>
-                        <a href="https://docs.google.com/forms/d/e/1FAIpQLSerbXlvB9otoQtWvdtocMPUxuhUYWx8wsW3mQ5G--EEp_l4dA/viewform" target="_blank" class="btn btn-sm">Register For Indore</a>
-                    </div>
-                </div>
+</ul>
 
-                <div class="timeline-item">
-                    <div class="tl-date">20 Nov 2026</div>
-                    <div class="tl-content">
-                        <h3>Mega Career Fair — Ujjain Chapter</h3>
-                        <p class="venue">📍 Venue: Hotel Shree Ganga, Ujjain</p>
-                        <p>Bringing top corporate academic paths directly to Ujjain. Ideal for scholarship verification routes.</p>
-                        <a href="https://docs.google.com/forms/d/e/1FAIpQLSerbXlvB9otoQtWvdtocMPUxuhUYWx8wsW3mQ5G--EEp_l4dA/viewform" target="_blank" class="btn btn-sm">Register For Ujjain</a>
-                    </div>
-                </div>
-            </div>
+<div class="nav-actions">
 
-            <div class="past-events-section">
-                <h3>Successful Past Deployments</h3>
-                <div class="past-grid">
-                    <div class="past-box">
-                        <h4>Ujjain Chapter (Zarokha)</h4>
-                        <p class="stat">🔥 150+ Student Registrations</p>
-                        <p>Executed live profile counseling generating massive positive feedback loops across regional centers.</p>
-                    </div>
-                    <div class="past-box">
-                        <h4>Ratlam Chapter (Ajanta Palace)</h4>
-                        <p class="stat">🚀 100+ Profiles Evaluated</p>
-                        <p>Hosted academic alignment programs for engineering, design, and management candidates at Hotel Ajanta Palace.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+<button id="theme-toggle">
 
-    <!-- FAQs Accordion -->
-    <section id="faqs" class="section-padding bg-light">
-        <div class="container" style="max-width: 800px;">
-            <div class="text-center">
-                <span class="sub-title">Common Questions</span>
-                <h2 class="section-title">Frequently Asked Queries</h2>
-            </div>
+<i class="fas fa-moon"></i>
 
-            <div class="accordion">
-                <div class="accordion-item">
-                    <button class="accordion-title">How do you match students to universities? <span>▼</span></button>
-                    <div class="accordion-body">
-                        <p>We analyze your target field, grades, budget constraints, and country preferences to create a realistic list of matching partner institutions.</p>
-                    </div>
-                </div>
-                <div class="accordion-item">
-                    <button class="accordion-title">Are there any hidden service fees? <span>▼</span></button>
-                    <div class="accordion-body">
-                        <p>No, we maintain absolute transparency with our student community. All consulting plans, application routes, and guidance options are fully detailed upfront.</p>
-                    </div>
-                </div>
-                <div class="accordion-item">
-                    <button class="accordion-title">Can I apply for scholarships through your desk? <span>▼</span></button>
-                    <div class="accordion-body">
-                        <p>Yes, our direct relationships with institutions allow us to fast-track eligible student profiles for available fee-waivers and merit scholarships.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+</button>
 
-    <!-- Contact Form Section -->
-    <section id="contact" class="section-padding">
-        <div class="container grid-2 align-center">
-            <div class="contact-info">
-                <span class="sub-title">Get In Touch</span>
-                <h2>Connect With An Advisor Today</h2>
-                <p>Have questions about courses, university cut-offs, fee structures, or visa guidelines? Drop your details and an advisor will call you back.</p>
-                <div class="phone-link">
-                    <span class="icon">📞</span>
-                    <div>
-                        <span class="tag">Direct Help Desk</span>
-                        <a href="tel:+917415110399">+91 74151 10399</a>
-                    </div>
-                </div>
-            </div>
+<div class="menu-btn" id="menu-btn">
 
-            <div class="contact-form-box">
-                <form id="consultationForm">
-                    <div class="form-element">
-                        <label>Your Full Name</label>
-                        <input type="text" id="userName" name="userName" required placeholder="e.g., Rahul Sharma">
-                    </div>
-                    <div class="form-element">
-                        <label>WhatsApp Number</label>
-                        <input type="tel" id="userPhone" name="userPhone" required placeholder="+91 XXXXX XXXXX">
-                    </div>
-                    <div class="form-element">
-                        <label>Preferred Course Stream</label>
-                        <select id="userCourse" name="userCourse" required>
-                            <option value="" disabled selected>Choose your field...</option>
-                            <option value="Engineering">Engineering & Technology</option>
-                            <option value="Management">Management & MBA</option>
-                            <option value="Design">Design & Media Arts</option>
-                            <option value="Medical">Medical & Bioscience</option>
-                        </select>
-                    </div>
-                    <button type="submit" id="submitFormBtn" class="btn btn-primary btn-block">Submit Request</button>
-                </form>
-            </div>
-        </div>
-    </section>
+<i class="fas fa-bars"></i>
 
-    <!-- Footer Area -->
-    <footer class="footer">
-        <div class="container footer-grid">
-            <div class="footer-left">
-                <!-- Secondary Logo Insertion -->
-                <img src="image_d0d5c2.png" alt="Career Crafters Global Footer Logo" class="footer-logo-img">
-                <p>Dedicated student consulting and university pathway placement services mapping academic goals to bright careers.</p>
-            </div>
-            <div class="footer-mid">
-                <h4>Contact Info</h4>
-                <p>📞 Phone: <a href="tel:+917415110399">+91 74151 10399</a></p>
-                <p>📍 Regional Student Placement Desk Network</p>
-            </div>
-            <div class="footer-right">
-                <h4>Follow Our Community</h4>
-                <div class="social-icons">
-                    <a href="https://www.instagram.com/careercrafters_global/" target="_blank" title="Instagram" class="social-icon-link">
-                        <i class="fab fa-instagram"></i>
-                    </a>
-                    <a href="https://www.linkedin.com/company/careercrafters-global/" target="_blank" title="LinkedIn" class="social-icon-link">
-                        <i class="fab fa-linkedin-in"></i>
-                    </a>
-                </div>
-            </div>
-        </div>
-        <div class="footer-bottom text-center">
-            <p>&copy; 2026 Career Crafters Global. All rights reserved.</p>
-        </div>
-    </footer>
+</div>
 
-    <!-- Simple Top Button -->
-    <button id="backToTopBtn">▲</button>
+</div>
 
-    <script src="script.js"></script>
+</nav>
+
+</header>
+
+<!-- HERO -->
+
+<section class="hero" id="home">
+
+<div class="hero-overlay"></div>
+
+<div class="hero-content">
+
+<span class="badge">
+
+🌍 Trusted Education Partner
+
+</span>
+
+<h1>
+
+Shape Your Future With Confidence
+
+</h1>
+
+<p>
+
+Discover top universities,
+career opportunities,
+scholarships and global education pathways
+with expert guidance.
+
+</p>
+
+<div class="hero-buttons">
+
+<a
+href="https://docs.google.com/forms/d/e/1FAIpQLSerbXlvB9otoQtWvdtocMPUxuhUYWx8wsW3mQ5G--EEp_l4dA/viewform"
+target="_blank"
+class="btn-primary">
+
+Register Now
+
+</a>
+
+<a href="#services"
+class="btn-secondary">
+
+Explore Services
+
+</a>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- STATS -->
+
+<section class="stats">
+
+<div class="stat-card">
+
+<h2 class="counter"
+data-target="5000">
+
+0
+
+</h2>
+
+<p>Students Guided</p>
+
+</div>
+
+<div class="stat-card">
+
+<h2 class="counter"
+data-target="100">
+
+0
+
+</h2>
+
+<p>University Partners</p>
+
+</div>
+
+<div class="stat-card">
+
+<h2 class="counter"
+data-target="50">
+
+0
+
+</h2>
+
+<p>Career Events</p>
+
+</div>
+
+<div class="stat-card">
+
+<h2 class="counter"
+data-target="95">
+
+0
+
+</h2>
+
+<p>Success Rate %</p>
+
+</div>
+
+</section>
+
+<!-- SERVICES -->
+
+<section id="services"
+class="services">
+
+<div class="section-title">
+
+<h2>Our Services</h2>
+
+<p>
+
+Helping students make informed
+academic and career decisions.
+
+</p>
+
+</div>
+
+<div class="services-grid">
+
+<div class="service-card">
+
+<i class="fas fa-user-graduate"></i>
+
+<h3>Career Counselling</h3>
+
+<p>
+
+Personalized guidance based on
+your interests and goals.
+
+</p>
+
+</div>
+
+<div class="service-card">
+
+<i class="fas fa-school"></i>
+
+<h3>University Admissions</h3>
+
+<p>
+
+Admission support for top
+universities across India.
+
+</p>
+
+</div>
+
+<div class="service-card">
+
+<i class="fas fa-award"></i>
+
+<h3>Scholarships</h3>
+
+<p>
+
+Scholarship opportunities and
+application assistance.
+
+</p>
+
+</div>
+
+<div class="service-card">
+
+<i class="fas fa-globe"></i>
+
+<h3>Study Abroad</h3>
+
+<p>
+
+Explore international
+education opportunities.
+
+</p>
+
+</div>
+
+<div class="service-card">
+
+<i class="fas fa-money-check"></i>
+
+<h3>Education Loans</h3>
+
+<p>
+
+Financial assistance and
+loan guidance.
+
+</p>
+
+</div>
+
+<div class="service-card">
+
+<i class="fas fa-laptop-code"></i>
+
+<h3>Skill Development</h3>
+
+<p>
+
+Workshops and career-focused
+training programs.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- CAREER PATHS -->
+
+<section id="paths"
+class="career-paths">
+
+<div class="section-title">
+
+<h2>Explore Career Paths</h2>
+
+<p>
+
+Hover or tap cards to discover
+popular opportunities.
+
+</p>
+
+</div>
+
+<div class="flip-grid">
+
+<!-- Engineering -->
+
+<div class="flip-card">
+
+<div class="flip-inner">
+
+<div class="flip-front">
+
+<i class="fas fa-laptop-code"></i>
+
+<h3>Engineering</h3>
+
+</div>
+
+<div class="flip-back">
+
+<h4>Popular Fields</h4>
+
+<p>
+
+Computer Science<br>
+AI & ML<br>
+Cyber Security<br>
+Data Science
+
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- Management -->
+
+<div class="flip-card">
+
+<div class="flip-inner">
+
+<div class="flip-front">
+
+<i class="fas fa-chart-line"></i>
+
+<h3>Management</h3>
+
+</div>
+
+<div class="flip-back">
+
+<h4>Popular Fields</h4>
+
+<p>
+
+BBA<br>
+MBA<br>
+Finance<br>
+Marketing
+
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- Law -->
+
+<div class="flip-card">
+
+<div class="flip-inner">
+
+<div class="flip-front">
+
+<i class="fas fa-gavel"></i>
+
+<h3>Law</h3>
+
+</div>
+
+<div class="flip-back">
+
+<h4>Popular Fields</h4>
+
+<p>
+
+BA LLB<br>
+BBA LLB<br>
+Corporate Law<br>
+Cyber Law
+
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- Design -->
+
+<div class="flip-card">
+
+<div class="flip-inner">
+
+<div class="flip-front">
+
+<i class="fas fa-palette"></i>
+
+<h3>Design</h3>
+
+</div>
+
+<div class="flip-back">
+
+<h4>Popular Fields</h4>
+
+<p>
+
+UI UX<br>
+Graphic Design<br>
+Fashion Design<br>
+Animation
+
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- Medical -->
+
+<div class="flip-card">
+
+<div class="flip-inner">
+
+<div class="flip-front">
+
+<i class="fas fa-user-doctor"></i>
+
+<h3>Medical</h3>
+
+</div>
+
+<div class="flip-back">
+
+<h4>Popular Fields</h4>
+
+<p>
+
+MBBS<br>
+BDS<br>
+Nursing<br>
+Pharmacy
+
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- Study Abroad -->
+
+<div class="flip-card">
+
+<div class="flip-inner">
+
+<div class="flip-front">
+
+<i class="fas fa-plane"></i>
+
+<h3>Study Abroad</h3>
+
+</div>
+
+<div class="flip-back">
+
+<h4>Destinations</h4>
+
+<p>
+
+Canada<br>
+UK<br>
+Australia<br>
+USA
+
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+<!-- PARTNER UNIVERSITIES -->
+
+<section id="universities" class="universities">
+
+<div class="section-title">
+
+<h2>Our University Partners</h2>
+
+<p>
+Connect with top universities and institutions
+across India.
+</p>
+
+</div>
+
+<div class="university-slider">
+
+<div class="slider-track">
+
+<div class="uni-card">
+<img src="images/logo-medicaps.png" alt="">
+<h4>Medi-Caps University</h4>
+</div>
+
+<div class="uni-card">
+<img src="images/logo-avantika.png" alt="">
+<h4>Avantika University</h4>
+</div>
+
+<div class="uni-card">
+<img src="images/logo-aisect.png" alt="">
+<h4>AISECT University</h4>
+</div>
+
+<div class="uni-card">
+<img src="images/logo-parul.png" alt="">
+<h4>Parul University</h4>
+</div>
+
+<div class="uni-card">
+<img src="images/logo-chandigarh.png" alt="">
+<h4>Chandigarh University</h4>
+</div>
+
+<div class="uni-card">
+<img src="images/logo-nmims.png" alt="">
+<h4>NMIMS</h4>
+</div>
+
+<div class="uni-card">
+<img src="images/logo-amity.png">
+<h4>Amity University</h4>
+</div>
+
+<div class="uni-card">
+<img src="images/logo-srm.png">
+<h4>SRM University</h4>
+</div>
+
+<div class="uni-card">
+<img src="images/logo-benett.png">
+<h4>Bennett University</h4>
+</div>
+
+<div class="uni-card">
+<img src="images/logo-wpu.png">
+<h4>MIT-WPU</h4>
+</div>
+
+<div class="uni-card">
+<img src="images/logo-sage.png">
+<h4>SAGE University</h4>
+</div>
+
+
+</div>
+
+</div>
+
+</section>
+
+<!-- CAREER FAIR SECTION -->
+
+<section class="career-fair" id="careerfair">
+
+<div class="career-fair-overlay"></div>
+
+<div class="career-fair-content">
+
+<span class="badge">
+
+🎓 Career Fair 2026
+
+</span>
+
+<h2>
+
+Explore Opportunities Beyond Boundaries
+
+</h2>
+
+<p>
+
+Meet top universities,
+discover scholarships,
+receive expert counselling
+and build your future.
+
+</p>
+
+<a
+href="https://docs.google.com/forms/d/e/1FAIpQLSerbXlvB9otoQtWvdtocMPUxuhUYWx8wsW3mQ5G--EEp_l4dA/viewform"
+target="_blank"
+class="btn-primary">
+
+Register Now
+
+</a>
+
+</div>
+
+</section>
+
+<!-- UPCOMING EVENTS -->
+
+<section id="events" class="timeline-section">
+
+<div class="section-title">
+
+<h2>Upcoming Events</h2>
+
+<p>
+
+Join our upcoming educational
+and career-focused programs.
+
+</p>
+
+</div>
+
+<div class="timeline">
+
+<div class="timeline-item">
+
+<div class="timeline-date">
+
+24 JUN
+
+</div>
+
+<div class="timeline-content">
+
+<h3>Global Education Fair</h3>
+
+<p>
+
+Explore study opportunities
+across international destinations.
+
+</p>
+
+</div>
+
+</div>
+
+<div class="timeline-item">
+
+<div class="timeline-date">
+
+12 JUL
+
+</div>
+
+<div class="timeline-content">
+
+<h3>Career Counselling Session</h3>
+
+<p>
+
+One-to-one profile assessment
+and guidance.
+
+</p>
+
+</div>
+
+</div>
+
+<div class="timeline-item">
+
+<div class="timeline-date">
+
+18 AUG
+
+</div>
+
+<div class="timeline-content">
+
+<h3>Scholarship Awareness Webinar</h3>
+
+<p>
+
+Understand scholarships,
+grants and funding options.
+
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- PAST EVENTS -->
+
+<section class="past-events">
+
+<div class="section-title">
+
+<h2>Past Events</h2>
+
+<p>
+
+A glimpse of our successful
+career fairs and educational events.
+
+</p>
+
+</div>
+
+<div class="gallery-grid">
+
+<div class="gallery-card">
+
+<img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=1200">
+
+<div class="gallery-content">
+
+<h3>Career Fair Ratlam</h3>
+
+<p>500+ students participated.</p>
+
+</div>
+
+</div>
+
+<div class="gallery-card">
+
+<img src="https://images.unsplash.com/photo-1543269865-cbf427effbad?w=1200">
+
+<div class="gallery-content">
+
+<h3>University Connect</h3>
+
+<p>Top universities under one roof.</p>
+
+</div>
+
+</div>
+
+<div class="gallery-card">
+
+<img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=1200">
+
+<div class="gallery-content">
+
+<h3>Career Guidance Workshop</h3>
+
+<p>Expert mentoring sessions.</p>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- TESTIMONIALS -->
+
+<section class="testimonials">
+
+<div class="section-title">
+
+<h2>Success Stories</h2>
+
+<p>
+
+Hear from students who found
+the right career path.
+
+</p>
+
+</div>
+
+<div class="testimonial-grid">
+
+<div class="testimonial-card">
+
+<p>
+
+Career Crafters helped me select
+the perfect university and scholarship.
+
+</p>
+
+<h4>Student</h4>
+
+</div>
+
+<div class="testimonial-card">
+
+<p>
+
+The counselling sessions were
+extremely valuable for my future planning.
+
+</p>
+
+<h4>Student</h4>
+
+</div>
+
+<div class="testimonial-card">
+
+<p>
+
+A professional team that genuinely
+cares about students.
+
+</p>
+
+<h4>Student</h4>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- CONTACT -->
+
+<section id="contact" class="contact">
+
+<div class="section-title">
+
+<h2>Get In Touch</h2>
+
+<p>
+
+Let's discuss your academic
+and career goals.
+
+</p>
+
+</div>
+
+<div class="contact-container">
+
+<div class="contact-info">
+
+<h3>Career Crafters Global</h3>
+
+<p>
+
+<i class="fas fa-phone"></i>
++91 7415110399
+
+</p>
+
+<p>
+
+<i class="fas fa-location-dot"></i>
+India
+
+</p>
+
+<div class="social-links">
+
+<a
+href="https://www.instagram.com/careercrafters_global/"
+target="_blank">
+
+<i class="fab fa-instagram"></i>
+
+</a>
+
+<a
+href="https://www.linkedin.com/company/careercrafters-global/"
+target="_blank">
+
+<i class="fab fa-linkedin"></i>
+
+</a>
+
+</div>
+
+</div>
+
+<form class="contact-form">
+
+<input
+type="text"
+id="studentName"
+placeholder="Your Name"
+required>
+
+<input
+type="tel"
+id="phoneNumber"
+placeholder="Phone Number"
+required>
+
+<textarea
+id="studentMessage"
+placeholder="Your Message"
+required></textarea>
+
+<button type="submit">
+
+Send Message
+
+</button>
+
+</form>
+
+<div id="successMessage"></div>
+
+</div>
+
+</section>
+
+<!-- FOOTER -->
+
+<footer>
+
+<div class="footer-content">
+
+<img
+src="images/careercrafters-global.png"
+alt="logo"
+class="footer-logo">
+
+<h3>Career Crafters Global</h3>
+
+<p>
+
+Empowering students through
+education, opportunities and guidance.
+
+</p>
+
+<a
+href="https://docs.google.com/forms/d/e/1FAIpQLSerbXlvB9otoQtWvdtocMPUxuhUYWx8wsW3mQ5G--EEp_l4dA/viewform"
+target="_blank"
+class="footer-btn">
+
+Register Now
+
+</a>
+
+</div>
+
+<div class="footer-bottom">
+
+<p>
+
+© 2026 Career Crafters Global.
+All Rights Reserved.
+
+</p>
+
+</div>
+
+</footer>
+
+<script src="script.js"></script>
+
 </body>
 </html>
