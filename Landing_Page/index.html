@@ -1,175 +1,235 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Career Crafters Global | Premium Academic Advisors</title>
+    <title>Career Crafters Global | Premium Academic Advisory Workspace</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <!-- Section 1: Navigation Bar -->
+    <!-- Section 1: Glassmorphic Navigation Bar -->
     <header class="navbar">
         <div class="nav-container">
             <a href="#" class="logo">
-                <img src="images/careercrafters-global.png" alt="Career Crafters Global Logo" class="brand-logo-img">
+                <span class="logo-accent">CAREER</span>CRAFTERS
             </a>
             
-            <button class="menu-toggle" id="mobile-toggle" aria-label="Toggle navigation">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
+            <div class="nav-right-actions">
+                <!-- Theme Toggle Button -->
+                <button id="themeToggleBtn" class="theme-toggle-btn" aria-label="Toggle Theme">
+                    <span class="theme-icon">☀️</span>
+                </button>
+
+                <button class="menu-toggle" id="mobile-toggle" aria-label="Toggle navigation">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
 
             <nav class="nav-menu" id="nav-menu">
                 <a href="#home" class="nav-link active">Home</a>
                 <a href="#about" class="nav-link">About</a>
                 <a href="#explorer" class="nav-link">Paths</a>
-                <a href="#quiz" class="nav-link">Path Finder</a>
+                <a href="#quiz" class="nav-link">Path Finder ⭐</a>
                 <a href="#universities" class="nav-link">Universities</a>
                 <a href="#events" class="nav-link">Events</a>
-                <a href="#contact" class="nav-link nav-btn-alt">Contact Us</a>
+                <a href="#faqs" class="nav-link">FAQs</a>
+                <a href="#contact" class="nav-link nav-btn-alt">Book Consultation</a>
             </nav>
         </div>
     </header>
 
-    <!-- Section 2: Hero Section -->
+    <!-- Section 2: Immersive Hero Area -->
     <section id="home" class="hero-section">
+        <div class="hero-bg-carousel">
+            <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=1920&q=80" alt="Global Education Hero Cover">
+        </div>
         <div class="hero-overlay"></div>
         <div class="hero-content scroll-reveal">
             <span class="hero-badge">⚡ Shape Your Future With Confidence</span>
-            <h1>Shape Your Future with <span class="gradient-text">Confidence</span></h1>
-            <p>Explore Top Universities, Scholarships, Career Guidance & Study Abroad Opportunities through curated corporate paths.</p>
+            <h1>Architect Your Global <span class="gradient-text">Academic Journey</span></h1>
+            <p>Explore Top Universities, Curated Scholarships, Corporate Strategy Pipelines & Global Visa Pathways through data-driven advisory architecture.</p>
             <div class="hero-actions">
-                <a href="https://docs.google.com/forms/d/e/1FAIpQLSerbXlvB9otoQtWvdtocMPUxuhUYWx8wsW3mQ5G--EEp_l4dA/viewform" target="_blank" class="btn btn-primary glow-effect">Register Now</a>
-                <a href="#quiz" class="btn btn-secondary">Take Path Quiz ⭐</a>
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSerbXlvB9otoQtWvdtocMPUxuhUYWx8wsW3mQ5G--EEp_l4dA/viewform" target="_blank" class="btn btn-primary glow-effect">Register Online Now</a>
+                <a href="#quiz" class="btn btn-secondary">Take Path Quiz</a>
             </div>
         </div>
     </section>
 
-    <!-- Section 3: About Us -->
+    <!-- Section 3: Premium Metric Showcase -->
+    <section class="metrics-strip bg-gradient-mesh">
+        <div class="container metrics-grid">
+            <div class="metric-card scroll-reveal">
+                <div class="metric-num">98%</div>
+                <div class="metric-lbl">Visa Processing Success</div>
+            </div>
+            <div class="metric-card scroll-reveal">
+                <div class="metric-num">250+</div>
+                <div class="metric-lbl">Global Verified Universities</div>
+            </div>
+            <div class="metric-card scroll-reveal">
+                <div class="metric-num">15Cr+</div>
+                <div class="metric-lbl">Scholarships Disbursed</div>
+            </div>
+            <div class="metric-card scroll-reveal">
+                <div class="metric-num">5000+</div>
+                <div class="metric-lbl">Active Alumni Network</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 4: Deep Insight About Section -->
     <section id="about" class="section-padding">
         <div class="container grid-2 align-center">
             <div class="about-image-wrapper scroll-reveal">
-                <div class="decorative-box-behind"></div>
-                <img src="images/about-us.jpg" alt="Career Crafters Advising Studio" class="premium-img">
+                <div class="decorative-blob"></div>
+                <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=800&q=80" alt="Career Crafters Academic Board" class="premium-img">
             </div>
             <div class="about-text scroll-reveal">
-                <span class="sub-title">Who We Are</span>
-                <h2>Empowering Students Globally to Reach True Potential</h2>
-                <p>Career Crafters Global is dedicated to helping students make informed decisions about higher education and career pathways.</p>
-                <p>We connect students with elite global universities, corporate career development experts, and crucial exclusive scholarship pipelines to smoothly transform individual learning trajectories.</p>
+                <span class="sub-title">Strategic Elite Advising</span>
+                <h2>Empowering Ambitions Globally to Reach Infinite Trajectories</h2>
+                <p>Career Crafters Global represents the baseline connection between native capabilities and international performance hubs. We streamline admission mechanics cleanly.</p>
+                <div class="about-features-list">
+                    <div class="feat-item">
+                        <span class="feat-icon">🎯</span>
+                        <div><strong>Target Portfolio Customization:</strong> We match your financial capability explicitly to target countries.</div>
+                    </div>
+                    <div class="feat-item">
+                        <span class="feat-icon">📜</span>
+                        <div><strong>Exclusive Merit Waivers:</strong> Pre-evaluated document routes directly inside internal college pools.</div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- NEW SECTION - Section 4: Career Path Explorer -->
+    <!-- Section 5: Career Path Explorer (CSS 3D Flip Design) -->
     <section id="explorer" class="section-padding bg-light">
         <div class="container text-center">
-            <span class="sub-title">Discovery Studio</span>
+            <span class="sub-title">Discovery Track Studio</span>
             <h2 class="section-title">Career Path Explorer</h2>
-            <p class="section-subtitle-text">Hover over any target industry quadrant below to reveal specialized high-trajectory academic paths, emerging skills, and professional fields.</p>
+            <p class="section-subtitle-text">Hover or click on any vector quadrant to reveal specialize focus directions, future technology streams, and degree pathways.</p>
             
             <div class="explorer-grid">
-                <!-- Engineering Card -->
+                <!-- Card 1 -->
                 <div class="explorer-card scroll-reveal">
                     <div class="card-front">
-                        <div class="explorer-icon">⚙️</div>
-                        <h3>Engineering</h3>
-                        <p>Next-gen building, tech ecosystems, and architecture.</p>
+                        <div class="card-img-bg" style="background-image: url('https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&w=400&q=80');"></div>
+                        <div class="card-front-overlay"></div>
+                        <div class="card-front-content">
+                            <div class="explorer-icon">⚙️</div>
+                            <h3>Engineering</h3>
+                        </div>
                     </div>
                     <div class="card-back bg-grad-purple">
                         <h4>Specializations</h4>
                         <ul>
                             <li>B.Tech (Core Domains)</li>
                             <li>Artificial Intelligence & ML</li>
-                            <li>Data Science Systems</li>
-                            <li>Cyber Security Core</li>
+                            <li>Data Science Infrastructure</li>
+                            <li>Cyber Security Architecture</li>
                         </ul>
                     </div>
                 </div>
-                <!-- Management Card -->
+                <!-- Card 2 -->
                 <div class="explorer-card scroll-reveal">
                     <div class="card-front">
-                        <div class="explorer-icon">📈</div>
-                        <h3>Management</h3>
-                        <p>Corporate strategic leadership, systems, and governance.</p>
+                        <div class="card-img-bg" style="background-image: url('https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=400&q=80');"></div>
+                        <div class="card-front-overlay"></div>
+                        <div class="card-front-content">
+                            <div class="explorer-icon">📈</div>
+                            <h3>Management</h3>
+                        </div>
                     </div>
                     <div class="card-back bg-grad-blue">
                         <h4>Specializations</h4>
                         <ul>
-                            <li>MBA & BBA Programs</li>
-                            <li>Data & Business Analytics</li>
-                            <li>FinTech Ecosystems</li>
-                            <li>Global Strategic HR</li>
+                            <li>Global MBA & BBA Tracks</li>
+                            <li>Business & Data Analytics</li>
+                            <li>FinTech Financial Systems</li>
+                            <li>Strategic HR Management</li>
                         </ul>
                     </div>
                 </div>
-                <!-- Law Card -->
+                <!-- Card 3 -->
                 <div class="explorer-card scroll-reveal">
                     <div class="card-front">
-                        <div class="explorer-icon">⚖️</div>
-                        <h3>Law</h3>
-                        <p>Legal infrastructure, corporate safety, and compliance.</p>
+                        <div class="card-img-bg" style="background-image: url('https://images.unsplash.com/photo-1589829545856-d10d557cf95f?auto=format&fit=crop&w=400&q=80');"></div>
+                        <div class="card-front-overlay"></div>
+                        <div class="card-front-content">
+                            <div class="explorer-icon">⚖️</div>
+                            <h3>Law</h3>
+                        </div>
                     </div>
                     <div class="card-back bg-grad-purple">
                         <h4>Specializations</h4>
                         <ul>
-                            <li>BA LLB / BBA LLB</li>
-                            <li>Corporate Legal Systems</li>
-                            <li>Cyber Jurisprudence</li>
-                            <li>Intellectual Property</li>
+                            <li>BA LLB / BBA LLB Joint</li>
+                            <li>Corporate Compliance Laws</li>
+                            <li>Cyber Jurisprudence Domain</li>
+                            <li>Intellectual Property Law</li>
                         </ul>
                     </div>
                 </div>
-                <!-- Design Card -->
+                <!-- Card 4 -->
                 <div class="explorer-card scroll-reveal">
                     <div class="card-front">
-                        <div class="explorer-icon">🎨</div>
-                        <h3>Design</h3>
-                        <p>Creative architecture, interface spaces, and media.</p>
+                        <div class="card-img-bg" style="background-image: url('https://images.unsplash.com/photo-1501504905252-473c47e087f8?auto=format&fit=crop&w=400&q=80');"></div>
+                        <div class="card-front-overlay"></div>
+                        <div class="card-front-content">
+                            <div class="explorer-icon">🎨</div>
+                            <h3>Design</h3>
+                        </div>
                     </div>
                     <div class="card-back bg-grad-blue">
                         <h4>Specializations</h4>
                         <ul>
-                            <li>B.Des / M.Des Frameworks</li>
-                            <li>UI/UX Digital Interfaces</li>
-                            <li>Product Architecture</li>
-                            <li>Communication Design</li>
+                            <li>B.Des / M.Des Formats</li>
+                            <li>UI/UX Experience Design</li>
+                            <li>Industrial Product Design</li>
+                            <li>Communication & Media</li>
                         </ul>
                     </div>
                 </div>
-                <!-- Medical Card -->
+                <!-- Card 5 -->
                 <div class="explorer-card scroll-reveal">
                     <div class="card-front">
-                        <div class="explorer-icon">🩺</div>
-                        <h3>Medical</h3>
-                        <p>Clinical biology, global healthcare, and therapeutics.</p>
+                        <div class="card-img-bg" style="background-image: url('https://images.unsplash.com/photo-1537368910025-700350fe46c7?auto=format&fit=crop&w=400&q=80');"></div>
+                        <div class="card-front-overlay"></div>
+                        <div class="card-front-content">
+                            <div class="explorer-icon">🩺</div>
+                            <h3>Medical</h3>
+                        </div>
                     </div>
                     <div class="card-back bg-grad-purple">
                         <h4>Specializations</h4>
                         <ul>
-                            <li>MBBS & Allied Health</li>
-                            <li>Biomedical Technology</li>
-                            <li>Hospital Administration</li>
-                            <li>Genetics & Research</li>
+                            <li>MBBS / Allied Global Health</li>
+                            <li>Biomedical Engineering Tech</li>
+                            <li>Hospital Administration Systems</li>
+                            <li>Genetics Research Pipeline</li>
                         </ul>
                     </div>
                 </div>
-                <!-- Study Abroad Card -->
+                <!-- Card 6 -->
                 <div class="explorer-card scroll-reveal">
                     <div class="card-front">
-                        <div class="explorer-icon">✈️</div>
-                        <h3>Study Abroad</h3>
-                        <p>Cross-border academic mapping and global entry.</p>
+                        <div class="card-img-bg" style="background-image: url('https://images.unsplash.com/photo-1488646953014-85cb44e25828?auto=format&fit=crop&w=400&q=80');"></div>
+                        <div class="card-front-overlay"></div>
+                        <div class="card-front-content">
+                            <div class="explorer-icon">✈️</div>
+                            <h3>Study Abroad</h3>
+                        </div>
                     </div>
                     <div class="card-back bg-grad-blue">
                         <h4>Specializations</h4>
                         <ul>
-                            <li>Global MS / MBA Tracks</li>
-                            <li>International Internships</li>
-                            <li>Visa Framework Prep</li>
-                            <li>Cross-Border Funding</li>
+                            <li>International Degree Mapping</li>
+                            <li>Global Internship Visas</li>
+                            <li>IELTS / GRE Preparation Desk</li>
+                            <li>Cross-Border Funding Route</li>
                         </ul>
                     </div>
                 </div>
@@ -177,286 +237,286 @@
         </div>
     </section>
 
-    <!-- NEW SECTION - Section 5: Find Your Path Quiz -->
+    <!-- Section 6: Interactive Find Your Path Quiz Module -->
     <section id="quiz" class="section-padding dynamic-quiz-section">
         <div class="container">
             <div class="grid-2 align-center">
                 <div class="quiz-intro-text scroll-reveal">
-                    <span class="sub-title">AI Recommendation Engine</span>
+                    <span class="sub-title text-accent">AI Profile Processing</span>
                     <h2>Find Your Path Quiz ⭐</h2>
-                    <p>Not completely confident about which direction maps onto your career profile? Use our responsive discovery module to get real-time tailored guidance benchmarks instantly.</p>
-                    <div class="quiz-accent-quote">
-                        "Your ideal educational architecture is only one single decision click away."
+                    <p>Unsure which specific field profile fits your natural operational baseline? Use our verified algorithmic matrix selector to get structural feedback matches instantly.</p>
+                    <div class="interactive-illustration-card">
+                        <img src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?auto=format&fit=crop&w=600&q=80" alt="Academic assessment space" class="quiz-side-graphic">
                     </div>
                 </div>
                 
                 <div class="quiz-interactive-box scroll-reveal">
-                    <h3>Select Your Primary Core Interest Area:</h3>
+                    <h3>Select Core Focus Area:</h3>
                     <div class="quiz-options-stack">
                         <label class="quiz-option-label">
                             <input type="radio" name="interestGroup" value="Engineering" checked>
                             <span class="custom-radio-ui"></span>
-                            <span class="label-txt">⚙️ Engineering & Innovation Technology</span>
+                            <span class="label-txt">⚙️ Engineering & Innovation Tech</span>
                         </label>
                         <label class="quiz-option-label">
                             <input type="radio" name="interestGroup" value="Management">
                             <span class="custom-radio-ui"></span>
-                            <span class="label-txt">📈 Business Management & Leadership</span>
+                            <span class="label-txt">📈 Business Management & Systems</span>
                         </label>
                         <label class="quiz-option-label">
                             <input type="radio" name="interestGroup" value="Design">
                             <span class="custom-radio-ui"></span>
-                            <span class="label-txt">🎨 Media Design & Interactive Systems</span>
+                            <span class="label-txt">🎨 Media Design & Interactive Frameworks</span>
                         </label>
                         <label class="quiz-option-label">
                             <input type="radio" name="interestGroup" value="Medical">
                             <span class="custom-radio-ui"></span>
-                            <span class="label-txt">🩺 Medical Diagnostics & Healthcare</span>
+                            <span class="label-txt">🩺 Medical & Healthcare Sciences</span>
                         </label>
                     </div>
                     
-                    <button id="submitQuizBtn" class="btn btn-primary btn-block glow-effect" style="margin-top: 15px;">Get Recommendation</button>
+                    <button id="submitQuizBtn" class="btn btn-primary btn-block glow-effect">Get Recommendation</button>
                     
-                    <!-- Dynamic Output Panel Container -->
+                    <!-- Output Dashboard Inside -->
                     <div id="quizResultPanel" class="quiz-results-output-panel hidden">
                         <h4>🎯 Recommended Courses</h4>
-                        <p id="outCourses" class="result-text-bold">Course blueprints go here...</p>
+                        <p id="outCourses" class="result-text-bold">...</p>
                         
                         <h4>🏛️ Suggested Partner Universities</h4>
-                        <p id="outUniversities" class="result-text-bold">University listings go here...</p>
+                        <p id="outUniversities" class="result-text-bold">...</p>
                         
-                        <a href="https://docs.google.com/forms/d/e/1FAIpQLSerbXlvB9otoQtWvdtocMPUxuhUYWx8wsW3mQ5G--EEp_l4dA/viewform" target="_blank" class="btn btn-secondary btn-block btn-sm" style="margin-top: 15px;">Book Verification Interview</a>
+                        <a href="https://docs.google.com/forms/d/e/1FAIpQLSerbXlvB9otoQtWvdtocMPUxuhUYWx8wsW3mQ5G--EEp_l4dA/viewform" target="_blank" class="btn btn-secondary btn-block btn-sm" style="margin-top: 15px;">Lock Verification Slot</a>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Section 6: Partner Universities Panel Grid -->
+    <!-- Section 7: Partner Universities Network Gallery -->
     <section id="universities" class="section-padding bg-light">
         <div class="container text-center">
-            <span class="sub-title">Elite Networks</span>
-            <h2 class="section-title">Our Partner Universities</h2>
+            <span class="sub-title">Global Networks</span>
+            <h2 class="section-title">Direct Academic Partners</h2>
             
             <div class="universities-grid">
                 <div class="university-card scroll-reveal">
-                    <div class="uni-logo-box">
-                        <img src="images/logo-medicaps.png" alt="Medicaps University">
-                    </div>
+                    <div class="uni-logo-placeholder">🏛️</div>
                     <h4>Medicaps University</h4>
                 </div>
                 <div class="university-card scroll-reveal">
-                    <div class="uni-logo-box">
-                        <img src="images/logo-avantika.png" alt="Avantika University">
-                    </div>
+                    <div class="uni-logo-placeholder">🏛️</div>
                     <h4>Avantika University</h4>
                 </div>
                 <div class="university-card scroll-reveal">
-                    <div class="uni-logo-box">
-                        <img src="images/logo-chandigarh.png" alt="Chandigarh University">
-                    </div>
+                    <div class="uni-logo-placeholder">🏛️</div>
                     <h4>Chandigarh University</h4>
                 </div>
                 <div class="university-card scroll-reveal">
-                    <div class="uni-logo-box">
-                        <img src="images/logo-parul.png" alt="Parul University">
-                    </div>
+                    <div class="uni-logo-placeholder">🏛️</div>
                     <h4>Parul University</h4>
                 </div>
                 <div class="university-card scroll-reveal">
-                    <div class="uni-logo-box">
-                        <img src="images/logo-aisect.png" alt="AISECT University">
-                    </div>
+                    <div class="uni-logo-placeholder">🏛️</div>
                     <h4>AISECT University</h4>
                 </div>
                 <div class="university-card scroll-reveal">
-                    <div class="uni-logo-box">
-                        <img src="images/logo-nmims.png" alt="NMIMS University">
-                    </div>
+                    <div class="uni-logo-placeholder">🏛️</div>
                     <h4>NMIMS University</h4>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Section 7: Events (Upcoming Timeline & Past Accomplishments) -->
+    <!-- Section 8: Events (Modern Vertical Timeline Architecture) -->
     <section id="events" class="section-padding bg-dark text-white">
         <div class="container">
             <div class="text-center scroll-reveal">
-                <span class="sub-title text-accent">Career Fairs & Connects</span>
+                <span class="sub-title text-accent">Live Schedules</span>
                 <h2 class="section-title text-white">Events Portfolio</h2>
             </div>
 
-            <!-- Part A: NEW MODERN VERTICAL TIMELINE -->
-            <h3 class="event-block-heading scroll-reveal">📅 Upcoming Events Timeline (2026)</h3>
+            <!-- Vertical Timeline Panel -->
+            <h3 class="event-block-heading scroll-reveal">📅 Upcoming Activation Timeline</h3>
             
             <div class="modern-vertical-timeline">
                 <div class="timeline-line"></div>
                 
-                <!-- Event Node 1: Indore Career Fair -->
+                <!-- Item 1 -->
                 <div class="timeline-item scroll-reveal">
                     <div class="timeline-marker marker-active"></div>
                     <div class="timeline-content box-glow-purple">
                         <div class="timeline-date-tag">10 November 2026</div>
                         <h3>Mega Career Fair — Indore Chapter</h3>
                         <p class="timeline-venue">📍 Venue: Radisson Blu Hotel, Indore</p>
-                        <p>Interact directly with top recruiters and elite university representatives. Secure profile assessment sheets and explore immediate admission frameworks.</p>
-                        <a href="https://docs.google.com/forms/d/e/1FAIpQLSerbXlvB9otoQtWvdtocMPUxuhUYWx8wsW3mQ5G--EEp_l4dA/viewform" target="_blank" class="btn btn-primary btn-sm inline-btn">Register for Indore</a>
+                        <p>Interact directly with premium enterprise recruitment experts and get instant spot-profile evaluation scores sheet layout validation mapping.</p>
+                        <a href="https://docs.google.com/forms/d/e/1FAIpQLSerbXlvB9otoQtWvdtocMPUxuhUYWx8wsW3mQ5G--EEp_l4dA/viewform" target="_blank" class="btn btn-primary btn-sm inline-btn">Secure Spot (Indore)</a>
                     </div>
                 </div>
 
-                <!-- Event Node 2: Ujjain Career Fair -->
+                <!-- Item 2 -->
                 <div class="timeline-item scroll-reveal">
                     <div class="timeline-marker marker-active"></div>
                     <div class="timeline-content box-glow-blue">
                         <div class="timeline-date-tag">20 November 2026</div>
-                        <h3>Mega Career Fair — Ujjain Edition</h3>
+                        <h3>Mega Career Fair — Ujjain Chapter</h3>
                         <p class="timeline-venue">📍 Venue: Hotel Shree Ganga, Ujjain</p>
-                        <p>Bringing premium university choices directly to Ujjain. Ideal for final-year profile processing and scholarship evaluation matrix allocations.</p>
-                        <a href="https://docs.google.com/forms/d/e/1FAIpQLSerbXlvB9otoQtWvdtocMPUxuhUYWx8wsW3mQ5G--EEp_l4dA/viewform" target="_blank" class="btn btn-primary btn-sm inline-btn">Register for Ujjain</a>
+                        <p>Bringing top corporate universities straight to Ujjain. Ideal for document processing verification loops and structural scholarship allocation maps.</p>
+                        <a href="https://docs.google.com/forms/d/e/1FAIpQLSerbXlvB9otoQtWvdtocMPUxuhUYWx8wsW3mQ5G--EEp_l4dA/viewform" target="_blank" class="btn btn-primary btn-sm inline-btn">Secure Spot (Ujjain)</a>
                     </div>
                 </div>
 
-                <!-- Event Node 3: Scholarship Webinar -->
+                <!-- Item 3 -->
                 <div class="timeline-item scroll-reveal">
                     <div class="timeline-marker"></div>
                     <div class="timeline-content">
                         <div class="timeline-date-tag">December 2026</div>
-                        <h3>Exclusive Scholarship & Funding Webinar</h3>
+                        <h3>Scholarship Masterclass & Webinar</h3>
                         <p class="timeline-venue">🌐 Channel: Live Digital Masterclass Desk</p>
-                        <p>An intricate deep dive into tuition waivers, financial criteria matching, and application portfolio preparation for international tracks.</p>
+                        <p>An intricate live breakdown mapping exact metrics to gain fully funded fellowships, baseline waivers, and international stipend access loops.</p>
                     </div>
                 </div>
 
-                <!-- Event Node 4: Study Abroad Session -->
+                <!-- Item 4 -->
                 <div class="timeline-item scroll-reveal">
                     <div class="timeline-marker"></div>
                     <div class="timeline-content">
                         <div class="timeline-date-tag">January 2027</div>
-                        <h3>Global Study Abroad Planning Summit</h3>
+                        <h3>Global Study Abroad Session</h3>
                         <p class="timeline-venue">🏢 Venue: Central Office Hub Suites</p>
-                        <p>Comprehensive evaluation covering visa rules, document sorting, and structural adjustments across top target countries.</p>
+                        <p>Strategic configuration briefing touching over visa documentation changes, banking logistics, and immediate settlement protocols cleanly.</p>
                     </div>
                 </div>
             </div>
 
-            <!-- Part B: Past Events Highlights -->
-            <h3 class="event-block-heading scroll-reveal" style="margin-top: 80px;">✅ Historical Impact & Past Success</h3>
+            <!-- Historical Section Highlights -->
+            <h3 class="event-block-heading scroll-reveal" style="margin-top: 80px;">✅ Historical Impact & Verified Analytics</h3>
             <div class="past-events-grid">
                 <div class="past-event-card scroll-reveal">
-                    <div class="past-tag">Completed</div>
-                    <h4>Ujjain Chapter (Zarokha)</h4>
-                    <p class="past-meta">📅 31st May 2026 | Ujjain Zarokha</p>
-                    <div class="past-stat-highlight">🔥 150+ Walk-ins Recorded</div>
-                    <p class="past-desc">Enthusiastic engagement with direct candidate profile evaluations and immediate academic roadmap processing.</p>
+                    <div class="past-tag">Completed Successfully</div>
+                    <h4>Ujjain Chapter Deployment (Zarokha)</h4>
+                    <p class="past-meta">📅 Ujjain Zarokha Hub Space</p>
+                    <div class="past-stat-highlight">🔥 150+ Direct Registrations Profiled</div>
+                    <p class="past-desc">Executed live counseling loops generating unprecedented user response maps and rapid target matches.</p>
                 </div>
                 <div class="past-event-card scroll-reveal">
-                    <div class="past-tag">Completed</div>
-                    <h4>Ratlam Chapter (Ajanta Palace)</h4>
-                    <p class="past-meta">📅 7 June 2026 | Hotel Ajanta Palace, Ratlam</p>
-                    <div class="past-stat-highlight">🚀 100+ Live Walk-ins</div>
-                    <p class="past-desc">Incredible community response, profile counseling panels, and highly positive candidate feedback metrics.</p>
+                    <div class="past-tag">Completed Successfully</div>
+                    <h4>Ratlam Chapter Deployment (Ajanta Palace)</h4>
+                    <p class="past-meta">📅 Hotel Ajanta Palace, Ratlam</p>
+                    <div class="past-stat-highlight">🚀 100+ Live Submissions Processed</div>
+                    <p class="past-desc">Exceptional student feedback metrics tracking positive user confidence indicators across all academic variables.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Section 8: Student Testimonials -->
-    <section class="section-padding">
-        <div class="container text-center">
-            <span class="sub-title">Success Testimonials</span>
-            <h2 class="section-title">What Our Students Say</h2>
-            
-            <div class="testimonials-grid">
-                <div class="testimonial-card scroll-reveal">
-                    <div class="stars">⭐⭐⭐⭐⭐</div>
-                    <p class="quote">"Career Crafters helped me find the right university and sorted my profile perfectly. Highly recommended!"</p>
-                    <h5 class="student-name">— Aarav Mehta</h5>
-                    <span class="student-meta">B.Tech Student</span>
+    <!-- NEW SECTION - Section 9: Live Interactive FAQ Accordion -->
+    <section id="faqs" class="section-padding">
+        <div class="container" style="max-width: 800px;">
+            <div class="text-center scroll-reveal">
+                <span class="sub-title">Got Ambiguity?</span>
+                <h2 class="section-title">Frequently Answered Queries</h2>
+            </div>
+
+            <div class="faq-accordion-stack">
+                <div class="faq-item scroll-reveal">
+                    <button class="faq-trigger">
+                        <span>How does Career Crafters optimize university selection metrics?</span>
+                        <span class="faq-arrow">↓</span>
+                    </button>
+                    <div class="faq-body">
+                        <p>We process your individual score matrices, standardized testing variables, financial limitations, and target locations against a proprietary verification pipeline to secure premium matches safely.</p>
+                    </div>
                 </div>
-                <div class="testimonial-card scroll-reveal">
-                    <div class="stars">⭐⭐⭐⭐⭐</div>
-                    <p class="quote">"The guidance for my overseas student visa application was completely stress-free. Splendid team coordination."</p>
-                    <h5 class="student-name">— Priya Sharma</h5>
-                    <span class="student-meta">MBA Candidate</span>
+
+                <div class="faq-item scroll-reveal">
+                    <button class="faq-trigger">
+                        <span>Are there specific hidden costs associated with processing documentation?</span>
+                        <span class="faq-arrow">↓</span>
+                    </button>
+                    <div class="faq-body">
+                        <p>Absolutely zero hidden parameters. We practice total corporate clarity. All consulting packages, visa documentation loops, and university application runs are detailed upfront.</p>
+                    </div>
                 </div>
-                <div class="testimonial-card scroll-reveal">
-                    <div class="stars">⭐⭐⭐⭐⭐</div>
-                    <p class="quote">"I managed to secure a 40% merit scholarship waiver purely due to their application building insights."</p>
-                    <h5 class="student-name">— Rohan Das</h5>
-                    <span class="student-meta">MS Computer Science</span>
+
+                <div class="faq-item scroll-reveal">
+                    <button class="faq-trigger">
+                        <span>Can I access regional or merit-based scholarships through your desk?</span>
+                        <span class="faq-arrow">↓</span>
+                    </button>
+                    <div class="faq-body">
+                        <p>Yes. We hold direct pipeline agreements with top universities, affording our premium cohort priority entry validation for exclusive financial waivers and tuition assistance grants.</p>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Section 9: Contact Form Overlay Frame -->
+    <!-- Section 10: High-Conversion Lead Capture Block -->
     <section id="contact" class="section-padding bg-light">
         <div class="container grid-2 align-center">
             <div class="contact-side-info scroll-reveal">
-                <span class="sub-title">Get In Touch</span>
-                <h2>Let's Plan Your Premium Corporate Academic Journey</h2>
-                <p>Have precise questions regarding counseling setups, admissions processing, upcoming fairs, or global documentation protocols? Connect with our desk directly.</p>
-                <div class="live-phone-link">
-                    <span class="phone-icon">📞</span>
+                <span class="sub-title">Corporate Interface</span>
+                <h2>Let's Configure Your Global Academic Profile</h2>
+                <p>Have precise inquiries regarding application timelines, processing criteria, structural waivers, or corporate partner entry gates? Connect to our dispatch desk instantly.</p>
+                <div class="live-phone-link-card">
+                    <span class="phone-icon-pulse">📞</span>
                     <div>
-                        <span class="phone-lbl">Direct Call Support Line</span>
+                        <span class="phone-lbl">Direct Call Support Desk</span>
                         <a href="tel:+917415110399" class="phone-num">+91 74151 10399</a>
                     </div>
                 </div>
             </div>
 
             <div class="form-wrapper-box scroll-reveal">
-                <div class="contact-image-overlay">
-                    <img src="images/consultation.jpg" alt="Consultation meeting Desk" class="form-banner-img">
+                <div class="contact-image-overlay" style="background-image: url('https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=600&q=80');">
                 </div>
                 <form id="consultationForm" class="contact-form-refined">
                     <div class="form-group">
-                        <label for="userName">Full Name</label>
-                        <input type="text" id="userName" required placeholder="Enter name...">
+                        <label for="userName">Candidate Full Name</label>
+                        <input type="text" id="userName" required placeholder="Ex: Rahul Verma">
                     </div>
                     <div class="form-group">
-                        <label for="userPhone">Phone Number</label>
+                        <label for="userPhone">Contact WhatsApp Number</label>
                         <input type="tel" id="userPhone" required placeholder="+91 XXXXX XXXXX">
                     </div>
                     <div class="form-group">
-                        <label for="userCourse">Course Pathway Interested In</label>
+                        <label for="userCourse">Target Academic Track</label>
                         <select id="userCourse" required>
-                            <option value="" disabled selected>Choose field profile...</option>
-                            <option value="Engineering">Engineering & Technology</option>
-                            <option value="Management">Business & Management</option>
-                            <option value="Medical">Medical & Global Healthcare</option>
-                            <option value="Study Abroad">Study Abroad International Paths</option>
+                            <option value="" disabled selected>Select direction...</option>
+                            <option value="Engineering">Engineering & Applied Tech</option>
+                            <option value="Management">Management & Strategic MBA</option>
+                            <option value="Medical">Medical & Bioscience Tracks</option>
+                            <option value="Study Abroad">Study Abroad International Tracks</option>
                         </select>
                     </div>
-                    <button type="submit" class="btn btn-primary btn-block glow-effect">Submit Consultation Request</button>
+                    <button type="submit" class="btn btn-primary btn-block glow-effect">Submit Advisory Request</button>
                 </form>
             </div>
         </div>
     </section>
 
-    <!-- Section 10: Footer Architecture Module -->
+    <!-- Section 11: Enterprise Footer Hub -->
     <footer class="footer-wrapper">
         <div class="container footer-grid">
             <div class="footer-brand">
-                <img src="images/careercrafters-global.png" alt="Career Crafters Global Logo" class="footer-logo-img">
-                <p>Leading strategic academic advisory and student transition workspace. Connecting ambitions directly to global universities securely.</p>
+                <div class="logo" style="margin-bottom: 15px;"><span class="logo-accent">CAREER</span>CRAFTERS</div>
+                <p>Leading international academic architecture workspace. Secure processing, verified partner portals, and premium global trajectories.</p>
             </div>
             <div class="footer-contact">
-                <h4>Contact Support</h4>
-                <p class="footer-call-highlight">📞 Phone: <a href="tel:+917415110399">+91 74151 10399</a></p>
+                <h4>Support Terminals</h4>
+                <p class="footer-call-highlight">📞 Desk: <a href="tel:+917415110399">+91 74151 10399</a></p>
                 <p>📍 Central Advisory Hub Network</p>
             </div>
             <div class="footer-socials">
-                <h4>Connect Verticals</h4>
+                <h4>Network Connections</h4>
                 <div class="social-links-flex">
-                    <a href="https://www.instagram.com/careercrafters_global/" target="_blank" class="social-pill ig">Instagram</a>
-                    <a href="https://www.linkedin.com/company/careercrafters-global/" target="_blank" class="social-pill li">LinkedIn</a>
+                    <a href="https://www.instagram.com/careercrafters_global/" target="_blank" class="social-pill ig">Instagram Terminal</a>
+                    <a href="https://www.linkedin.com/company/careercrafters-global/" target="_blank" class="social-pill li">LinkedIn Pipeline</a>
                 </div>
             </div>
         </div>
         <div class="footer-bottom text-center">
-            <p>Copyright &copy; 2026 Career Crafters Global. All Rights Reserved.</p>
+            <p>Copyright &copy; 2026 Career Crafters Global. Powered by Premium Glassmorphic UI Engineering.</p>
         </div>
     </footer>
 

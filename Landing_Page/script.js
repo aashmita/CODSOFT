@@ -1,6 +1,31 @@
 document.addEventListener("DOMContentLoaded", () => {
     
-    // --- 1. Mobile Menu Hamburger Overlap Logic ---
+    // --- 1. Light & Dark Theme Configuration Matrix Engine ---
+    const themeToggleBtn = document.getElementById("themeToggleBtn");
+    const themeIcon = themeToggleBtn ? themeToggleBtn.querySelector(".theme-icon") : null;
+    const currentSavedTheme = localStorage.getItem("workspace-theme") || "dark";
+
+    // Set dynamic baseline configuration setup initially
+    document.documentElement.setAttribute("data-theme", currentSavedTheme);
+    updateToggleIcon(currentSavedTheme);
+
+    if (themeToggleBtn) {
+        themeToggleBtn.addEventListener("click", () => {
+            const activeTheme = document.documentElement.getAttribute("data-theme");
+            const nextTargetTheme = activeTheme === "dark" ? "light" : "dark";
+            
+            document.documentElement.setAttribute("data-theme", nextTargetTheme);
+            localStorage.setItem("workspace-theme", nextTargetTheme);
+            updateToggleIcon(nextTargetTheme);
+        });
+    }
+
+    function updateToggleIcon(theme) {
+        if (!themeIcon) return;
+        themeIcon.textContent = theme === "dark" ? "☀️" : "🌙";
+    }
+
+    // --- 2. Mobile Responsive Nav Draw Overlap Logic ---
     const mobileToggle = document.getElementById("mobile-toggle");
     const navMenu = document.getElementById("nav-menu");
     const navLinks = document.querySelectorAll(".nav-link");
@@ -19,10 +44,77 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // --- 2. Floating Action Back To Top Controller ---
+    // --- 3. Live Accordion Logic Blueprint Frame ---
+    const faqTriggers = document.querySelectorAll(".faq-trigger");
+    faqTriggers.forEach(btn => {
+        btn.addEventListener("click", () => {
+            const currentFaqItem = btn.parentElement;
+            
+            // Close other sibling frames smoothly
+            document.querySelectorAll(".faq-item").forEach(item => {
+                if (item !== currentFaqItem) item.classList.remove("active");
+            });
+
+            currentFaqItem.classList.toggle("active");
+        });
+    });
+
+    // --- 4. Real-time Path Finder Recommendation Output System ---
+    const databaseMapping = {
+        Engineering: {
+            courses: "B.Tech Computer Science Engineering, AI & Data Analytics Systems, Cloud Infrastructure Architectures",
+            universities: "Medi-Caps University, Chandigarh University, Parul University Portfolio Hubs"
+        },
+        Management: {
+            courses: "Strategic Executive MBA, FinTech Systems Administration, BBA Business Operations",
+            universities: "NMIMS Management Suite, Avantika University, Chandigarh University Networks"
+        },
+        Design: {
+            courses: "B.Des Digital Interaction Space (UI/UX), Industrial Architecture Design, Media Arts",
+            universities: "Avantika Design Academies, Parul University Systems"
+        },
+        Medical: {
+            courses: "MBBS Global Tracks, Applied Bioinformatics Technology, Biomedical Diagnostics",
+            universities: "Medi-Caps Clinical Labs, AISECT Healthcare Division"
+        }
+    };
+
+    const submitQuizBtn = document.getElementById("submitQuizBtn");
+    const quizResultPanel = document.getElementById("quizResultPanel");
+    const outCourses = document.getElementById("outCourses");
+    const outUniversities = document.getElementById("outUniversities");
+
+    if (submitQuizBtn) {
+        submitQuizBtn.addEventListener("click", () => {
+            const radioPicked = document.querySelector('input[name="interestGroup"]:checked');
+            if (radioPicked) {
+                const selectionValue = radioPicked.value;
+                const matchData = databaseMapping[selectionValue];
+
+                outCourses.textContent = matchData.courses;
+                outUniversities.textContent = matchData.universities;
+
+                quizResultPanel.classList.remove("hidden");
+                quizResultPanel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            }
+        });
+    }
+
+    // --- 5. Interactive Form Submission Alerts ---
+    const consultationForm = document.getElementById("consultationForm");
+    if (consultationForm) {
+        consultationForm.addEventListener("submit", (e) => {
+            e.preventDefault();
+            const clientName = document.getElementById("userName").value;
+            alert(`Profile Logged Successfully, ${clientName}!\nOur regional desk will process your documentation matrix shortly.`);
+            consultationForm.reset();
+        });
+    }
+
+    // --- 6. Scroll Position Interaction Observables ---
     const backToTopBtn = document.getElementById("backToTopBtn");
     window.addEventListener("scroll", () => {
-        if (window.scrollY > 500) {
+        if (window.scrollY > 600) {
             backToTopBtn.style.display = "flex";
         } else {
             backToTopBtn.style.display = "none";
@@ -35,99 +127,14 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // --- 3. Intersection Observer Scroll Reveal Engine ---
     const revealItems = document.querySelectorAll(".scroll-reveal");
-    
-    const revealObserver = new IntersectionObserver((entries, observer) => {
+    const structuralObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add("revealed");
-                observer.unobserve(entry.target);
             }
         });
     }, { threshold: 0.05 });
 
-    revealItems.forEach(item => revealObserver.observe(item));
-
-    // --- 4. NEW: DYNAMIC PATH RECOMENDATION ENGINE (QUIZ LOGIC) ---
-    const quizDatabase = {
-        Engineering: {
-            courses: "B.Tech CSE, Artificial Intelligence & Machine Learning, Data Science Infrastructure, Cyber Security",
-            universities: "Medi-Caps University, Chandigarh University, Parul University"
-        },
-        Management: {
-            courses: "Global Strategic MBA, BBA Core Excellence, FinTech Operations, Business Analytics systems",
-            universities: "NMIMS University, Avantika University, Chandigarh University"
-        },
-        Design: {
-            courses: "B.Des User Interface (UI/UX), Communication Design, Product Architecture Portfolio",
-            universities: "Avantika University, Parul University"
-        },
-        Medical: {
-            courses: "MBBS, Allied Health Sciences, Genetics Research Frameworks, Hospital Administration",
-            universities: "Medi-Caps University, AISECT University, LNCT University"
-        }
-    };
-
-    const submitQuizBtn = document.getElementById("submitQuizBtn");
-    const quizResultPanel = document.getElementById("quizResultPanel");
-    const outCourses = document.getElementById("outCourses");
-    const outUniversities = document.getElementById("outUniversities");
-
-    if (submitQuizBtn) {
-        submitQuizBtn.addEventListener("click", () => {
-            // Find selected radio value
-            const selectedInterest = document.querySelector('input[name="interestGroup"]:checked');
-            
-            if (selectedInterest) {
-                const choice = selectedInterest.value;
-                const recommendation = quizDatabase[choice];
-
-                // Inject text elements data
-                outCourses.textContent = recommendation.courses;
-                outUniversities.textContent = recommendation.universities;
-
-                // Smoothly unhide dashboard visualization item
-                quizResultPanel.classList.remove("hidden");
-                
-                // Auto scroll down inside element metrics slightly for structural emphasis
-                quizResultPanel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-            }
-        });
-    }
-
-    // --- 5. Interactive Form Submission Handlers ---
-    const consultationForm = document.getElementById("consultationForm");
-    if (consultationForm) {
-        consultationForm.addEventListener("submit", (event) => {
-            event.preventDefault();
-
-            const studentName = document.getElementById("userName").value;
-            const chosenCourse = document.getElementById("userCourse").value;
-
-            alert(`Thank you for contacting us, ${studentName}!\nOur senior career counselor will call you shortly regarding your choice in the "${chosenCourse}" pathway.`);
-            consultationForm.reset();
-        });
-    }
-
-    // --- 6. Active Nav Link Intersection Observer Sync ---
-    const sectionBlocks = document.querySelectorAll("section[id]");
-    window.addEventListener("scroll", () => {
-        let currentScroll = window.scrollY;
-
-        sectionBlocks.forEach(currentSection => {
-            const h = currentSection.offsetHeight;
-            const top = currentSection.offsetTop - 120;
-            const id = currentSection.getAttribute("id");
-
-            if (currentScroll > top && currentScroll <= top + h) {
-                document.querySelectorAll(".nav-menu a").forEach(node => {
-                    node.classList.remove("active");
-                    if (node.getAttribute("href") === `#${id}`) {
-                        node.classList.add("active");
-                    }
-                });
-            }
-        });
-    });
+    revealItems.forEach(i => structuralObserver.observe(i));
 });
