@@ -1,59 +1,169 @@
+
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>CODSOFT Internship Projects</title>
+<title>Aashmita Tiwari | CODSOFT Projects</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
 <style>
 
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
 body{
-    font-family: Arial, sans-serif;
     background:#0f172a;
-    color:white;
-    text-align:center;
-    padding:50px;
-}
-
-h1{
-    margin-bottom:10px;
-}
-
-p{
-    margin-bottom:40px;
+    color:#ffffff;
+    min-height:100vh;
 }
 
 .container{
-    display:flex;
+    width:90%;
+    max-width:1300px;
+    margin:auto;
+    padding:60px 0;
+}
+
+/* HEADER */
+
+.top{
+    text-align:center;
+    margin-bottom:60px;
+}
+
+.top h1{
+    font-size:3rem;
+    font-weight:700;
+    margin-bottom:10px;
+}
+
+.top p{
+    color:#cbd5e1;
+    font-size:1.1rem;
+}
+
+.social-links{
+    margin-top:25px;
+}
+
+.social-links a{
+
+    width:55px;
+    height:55px;
+
+    display:inline-flex;
     justify-content:center;
-    gap:30px;
-    flex-wrap:wrap;
+    align-items:center;
+
+    margin:0 10px;
+
+    border-radius:50%;
+
+    background:#1e293b;
+
+    color:white;
+
+    text-decoration:none;
+
+    font-size:1.2rem;
+
+    transition:.3s;
+}
+
+.social-links a:hover{
+
+    background:#2563eb;
+
+    transform:translateY(-5px);
+
+    box-shadow:0 10px 25px rgba(37,99,235,.35);
+
+}
+
+/* PROJECTS */
+
+.projects{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(350px,1fr));
+    gap:35px;
 }
 
 .card{
     background:#1e293b;
+    border-radius:20px;
+    overflow:hidden;
+    transition:.4s;
+}
+
+.card:hover{
+    transform:translateY(-10px);
+    box-shadow:0 20px 40px rgba(37,99,235,.25);
+}
+
+.card img{
+    width:100%;
+    height:auto;
+    display:block;
+}
+
+.card-content{
     padding:25px;
-    width:250px;
-    border-radius:15px;
 }
 
-.card h2{
-    margin-bottom:15px;
+.card-content h2{
+    margin-bottom:12px;
+    font-size:1.4rem;
 }
 
-.card a{
+.card-content p{
+    color:#cbd5e1;
+    line-height:1.7;
+    margin-bottom:20px;
+    min-height:75px;
+}
+
+.btn{
     display:inline-block;
-    margin-top:10px;
-    padding:10px 20px;
+    text-decoration:none;
     background:#2563eb;
     color:white;
-    text-decoration:none;
-    border-radius:8px;
+    padding:12px 22px;
+    border-radius:10px;
+    font-weight:600;
+    transition:.3s;
 }
 
-.card a:hover{
+.btn:hover{
     background:#1d4ed8;
+}
+
+/* MOBILE */
+
+@media(max-width:768px){
+
+.top h1{
+    font-size:2.3rem;
+}
+
+.projects{
+    grid-template-columns:1fr;
+}
+
+.card img{
+    height:220px;
+}
+
 }
 
 </style>
@@ -62,35 +172,122 @@ p{
 
 <body>
 
-<h1>CODSOFT Web Development Internship</h1>
-
-<p>Level 1 Tasks by Aashmita Tiwari</p>
-
 <div class="container">
 
-<div class="card">
-<h2>Calculator</h2>
-<p>Scientific Calculator with Voice, Themes and Converter</p>
-<a href="Calculator/index.html">
-Open Project
-</a>
-</div>
+    <div class="top">
 
-<div class="card">
-<h2>Landing Page</h2>
-<p>Responsive Landing Page</p>
-<a href="Landing_Page/index.html">
-Open Project
-</a>
-</div>
+        <h1>Aashmita Tiwari</h1>
 
-<div class="card">
-<h2>Portfolio</h2>
-<p>Personal Portfolio Website</p>
-<a href="Portfolio/index.html">
-Open Project
-</a>
-</div>
+        <p>B.Tech Computer Science Engineering | 3rd Year</p>
+
+        <div class="social-links">
+
+            <a href="mailto:tiwariaashmita@gmail.com" target="_blank">
+                <i class="fas fa-envelope"></i>
+            </a>
+
+            <a href="https://github.com/aashmita" target="_blank">
+                <i class="fab fa-github"></i>
+            </a>
+
+            <a href="https://www.linkedin.com/in/aashmita-tiwari/" target="_blank">
+                <i class="fab fa-linkedin-in"></i>
+            </a>
+
+        </div>
+
+    </div>
+
+    <div class="projects">
+
+        <!-- CALCULATOR -->
+
+        <div class="card">
+
+            <img src="images/calculator-preview.png"
+            alt="Calculator">
+
+            <div class="card-content">
+
+                <h2>Advanced Calculator</h2>
+
+                <p>
+                    Scientific Calculator, Unit Converter,
+                    Voice Input, AI Read Aloud, History,
+                    Multi-language Support and Theme Switching.
+                </p>
+
+                <a href="https://aashmita.github.io/CODSOFT/Calculator/"
+                target="_blank"
+                class="btn">
+
+                    Open Project
+
+                </a>
+
+            </div>
+
+        </div>
+
+        <!-- LANDING PAGE -->
+
+        <div class="card">
+
+            <img src="images/landing-preview.png"
+            alt="Landing Page">
+
+            <div class="card-content">
+
+                <h2>Landing Page</h2>
+
+                <p>
+                    Responsive landing page featuring modern UI,
+                    clean layouts, smooth interactions,
+                    and mobile-friendly design.
+                </p>
+
+                <a href="https://aashmita.github.io/CODSOFT/Landing_Page/"
+                target="_blank"
+                class="btn">
+
+                    Open Project
+
+                </a>
+
+            </div>
+
+        </div>
+
+        <!-- PORTFOLIO -->
+
+        <div class="card">
+
+            <img src="images/portfolio-preview.png"
+            alt="Portfolio">
+
+            <div class="card-content">
+
+                <h2>Portfolio Website</h2>
+
+                <p>
+                    Professional portfolio showcasing projects,
+                    internships, leadership experiences,
+                    certifications and technical skills.
+                </p>
+
+                <a href="https://aashmita.github.io/CODSOFT/Portfolio/"
+                target="_blank"
+                class="btn">
+
+                    Open Project
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
 
 </div>
 
