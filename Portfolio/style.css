@@ -1,7 +1,4 @@
-/* ==========================================================================
-   CSS CUSTOM VARIABLES: Mix of White, Light Blue, and Premium Dark Blue
-   ========================================================================== */
-:root {
+:root, :root[data-theme="light"] {
     --bg-core: #ffffff;
     --bg-surface-light: #f4f9ff;
     --bg-surface-alt: #eef5fc;
@@ -13,8 +10,47 @@
     --card-shadow: 0 10px 30px rgba(11, 37, 69, 0.06);
     --hover-shadow: 0 20px 40px rgba(19, 64, 116, 0.12);
     --border-color: #e2eefc;
+    
+ /* DARK MODE: Muted, deep translucent tone instead of solid blue */
+    --profile-ring: #242c3a; 
+    --profile-ring-border: rgba(255, 255, 255, 0.1);
+    --glow-color: rgba(56, 189, 248, 0.15); /* Very gentle blue aura */
+    
+    --header-bg: rgba(255, 255, 255, 0.92);
+    --footer-bg: #06152b;
+    --footer-text: #cbd5e1;
     --transition-smooth: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
     --radius-standard: 16px;
+}
+
+:root[data-theme="dark"] {
+    --bg-core: #1e2530; 
+    --bg-surface-light: #242c3a; 
+    --bg-surface-alt: #293343; 
+    --card-bg: #283141; 
+    --text-primary-dark: #f8fafc; 
+    --text-secondary-dark: #cbd5e1; 
+    --text-muted: #94a3b8; 
+    --accent-light-blue: #38bdf8;
+    --accent-royal-blue: #60a5fa; 
+    --card-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    --hover-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+    --border-color: rgba(255, 255, 255, 0.05); 
+    
+    --profile-ring: #f4f9ff; 
+    --profile-ring-border: #e2eefc;
+    --glow-color: rgba(11, 37, 69, 0.06);
+    
+    --header-bg: rgba(30, 37, 48, 0.85);
+    --footer-bg: #151a22;
+    --footer-text: #94a3b8;
+}
+
+/* Global Transition Bridge for Themes */
+body {
+    background: var(--bg-core);
+    color: var(--text-primary-dark);
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
 }
 
 /* ==========================================================================
@@ -30,13 +66,6 @@
 
 html {
     overflow-x: hidden;
-}
-
-body {
-    background: var(--bg-core);
-    color: var(--text-primary-dark);
-    overflow-x: hidden;
-    line-height: 1.6;
 }
 
 /* Custom Scrollbar Optimization */
@@ -66,12 +95,13 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: rgba(255, 255, 255, 0.92);
+    background: var(--header-bg);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     border-bottom: 1px solid var(--border-color);
     z-index: 1000;
-    box-shadow: 0 4px 20px rgba(11, 37, 69, 0.02);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
+    transition: background 0.3s ease, border-color 0.3s ease;
 }
 
 .logo {
@@ -85,7 +115,7 @@ body {
     color: var(--accent-light-blue);
 }
 
-.navbar a {
+.navbar a, #theme-toggle {
     color: var(--text-secondary-dark);
     text-decoration: none;
     margin-left: 28px;
@@ -94,8 +124,11 @@ body {
     transition: var(--transition-smooth);
     position: relative;
     padding: 4px 0;
+    background: none;
+    border: none;
+    cursor: pointer;
 }
-.navbar a:hover, .navbar a.active {
+.navbar a:hover, .navbar a.active, #theme-toggle:hover {
     color: var(--accent-royal-blue);
 }
 .navbar a::after {
@@ -118,6 +151,7 @@ body {
 section {
     min-height: 100vh;
     padding: 140px 8% 100px;
+    transition: background-color 0.3s ease;
 }
 
 .section-title {
@@ -192,26 +226,6 @@ section {
     display: flex;
     justify-content: center;
 }
-.image-border-glow {
-    position: relative;
-    padding: 10px;
-    background: var(--bg-surface-light);
-    border-radius: 50%;
-    border: 1px solid var(--border-color);
-    box-shadow: var(--card-shadow);
-}
-.home-image img {
-    width: 320px;
-    height: 320px;
-    object-fit: cover;
-    border-radius: 50%;
-    border: 4px solid var(--bg-core);
-    transition: var(--transition-smooth);
-}
-.image-border-glow:hover img {
-    transform: scale(1.03);
-    box-shadow: 0 0 30px rgba(56, 189, 248, 0.25);
-}
 
 .social-icons {
     margin-top: 30px;
@@ -252,13 +266,14 @@ section {
     font-weight: 600;
     font-size: 0.95rem;
     margin-right: 15px;
-    box-shadow: 0 4px 15px rgba(11, 37, 69, 0.15);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
     transition: var(--transition-smooth);
 }
 .btn:hover {
     transform: translateY(-3px);
-    box-shadow: 0 8px 25px rgba(11, 37, 69, 0.25);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
     background: var(--text-secondary-dark);
+    color: var(--bg-core);
 }
 .btn-secondary {
     background: var(--bg-surface-light);
@@ -282,7 +297,7 @@ section {
     margin: auto;
 }
 .about-text {
-    background: var(--bg-core);
+    background: var(--bg-surface-light);
     padding: 45px;
     border-radius: var(--radius-standard);
     line-height: 1.8;
@@ -304,7 +319,7 @@ section {
 }
 
 /* ==========================================================================
-   ADDED: RECRUITER TECH STACK GENERATION GRID
+   TECH STACK GENERATION GRID
    ========================================================================== */
 .tech-stack-section {
     background: var(--bg-core);
@@ -349,8 +364,8 @@ section {
 .tech-card:hover {
     transform: translateY(-6px);
     background: var(--bg-core);
-    border-color: var(--card-brand-color);
-    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.04);
+    border-color: var(--accent-light-blue);
+    box-shadow: var(--hover-shadow);
 }
 .tech-card:hover .tech-icon-wrap {
     transform: scale(1.12);
@@ -790,10 +805,11 @@ section {
    FOOTER PRESENTATION BLOCK
    ========================================================================== */
 .footer {
-    background: #06152b;
-    color: #cbd5e1;
+    background: var(--footer-bg);
+    color: var(--footer-text);
     padding: 60px 8% 40px;
     text-align: center;
+    transition: background 0.3s ease, color 0.3s ease;
 }
 .footer h3 {
     color: #ffffff;
@@ -857,9 +873,55 @@ section {
 }
 @media (max-width: 768px) {
     .header { padding: 15px 5%; }
-    .navbar { display: none; } /* Standard hidden setup for simplification */
+    .navbar { display: none; }
     .home-content h1 { font-size: 2.8rem; }
     .contact-container { grid-template-columns: 1fr; }
     .experience-container { grid-template-columns: 1fr; }
     .robotics-list-grid { grid-template-columns: 1fr; }
+}
+
+/* ==========================================================================
+   PROFILE PICTURE SIZING & GLOW EFFECT
+   ========================================================================== */
+.image-border-glow {
+    position: relative;
+    width: 440px;   
+    height: 440px;  
+    border-radius: 50%;
+    padding: 4px;  /* Sleek, very thin strip channel */
+    
+    background: var(--profile-ring); 
+    border: 1px solid var(--profile-ring-border);
+    
+    /* UPDATED: Increased blur distribution to 45px with a 2px spread. 
+       This allows your custom shadow color to cast a soft, smooth aura falloff.
+    */
+    box-shadow: 0 0 45px 2px var(--glow-color);
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: box-shadow 0.3s ease, background 0.3s ease, border-color 0.3s ease;
+    animation: breathingPulseGlow 4s ease-in-out infinite alternate;
+}
+
+.image-border-glow img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+    
+    /* Thin frame inside the circle structure */
+    border: 1px solid var(--profile-ring-border); 
+    transition: border-color 0.3s ease;
+}
+
+/* Smooth breathing state for the soft glow aura */
+@keyframes breathingPulseGlow {
+    0% {
+        box-shadow: 0 0 35px var(--glow-color);
+    }
+    100% {
+        box-shadow: 0 0 55px 4px var(--glow-color);
+    }
 }

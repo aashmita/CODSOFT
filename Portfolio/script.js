@@ -1,10 +1,46 @@
 /* ==========================================
+   THEME SWITCHER CONFIGURATION (LIGHT/DARK)
+   ========================================== */
+document.addEventListener('DOMContentLoaded', () => {
+    const themeToggleBtn = document.getElementById('theme-toggle');
+    const toggleIcon = themeToggleBtn.querySelector('i');
+    const htmlElement = document.documentElement;
+
+    // Read stored client settings or fall back safely to light mode default configuration
+    const activeTheme = localStorage.getItem('portfolio-theme') || 'light';
+    
+    // Process default application state lifecycle
+    htmlElement.setAttribute('data-theme', activeTheme);
+    refreshToggleIconStyle(activeTheme);
+
+    // Event Registration for Theme Shifts
+    themeToggleBtn.addEventListener('click', () => {
+        const nextTheme = htmlElement.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+        
+        htmlElement.setAttribute('data-theme', nextTheme);
+        localStorage.setItem('portfolio-theme', nextTheme);
+        refreshToggleIconStyle(nextTheme);
+    });
+
+    // Helper handler to correctly swap active Icon States
+    function refreshToggleIconStyle(theme) {
+        if (theme === 'dark') {
+            toggleIcon.classList.remove('fa-moon');
+            toggleIcon.classList.add('fa-sun');
+        } else {
+            toggleIcon.classList.remove('fa-sun');
+            toggleIcon.classList.add('fa-moon');
+        }
+    }
+});
+
+
+/* ==========================================
    TYPING EFFECT FOR HERO ROLE PRESENTATION
    ========================================== */
 const roles = [
     "Software Developer",
     "Web Developer",
-    "IoT Enthusiast",
     "Problem Solver",
     "CSE Undergraduate"
 ];
