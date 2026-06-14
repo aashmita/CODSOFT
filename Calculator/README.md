@@ -23,13 +23,16 @@ An advanced calculator built using HTML, CSS, and JavaScript featuring scientifi
 ## Screenshots
 
 ### Home Screen
-<img width="1600" height="811" alt="image" src="https://github.com/user-attachments/assets/810bab18-938d-47c5-b43d-58e10c46325a" />
+<img width="1280" height="720" alt="image" src="https://github.com/user-attachments/assets/810bab18-938d-47c5-b43d-58e10c46325a" />
+
 ### Light Theme
-<img width="1600" height="762" alt="image" src="https://github.com/user-attachments/assets/4d67d507-20e4-4d54-ae32-fe559273ec2f" />
+<img width="1280" height="720" alt="image" src="https://github.com/user-attachments/assets/4d67d507-20e4-4d54-ae32-fe559273ec2f" />
+
 ### Scientific Calculator 
-<img width="959" height="919" alt="image" src="https://github.com/user-attachments/assets/a0ec62c6-9e86-499e-b238-cd9b16019698" />
+<img width="1280" height="720" alt="image" src="https://github.com/user-attachments/assets/a0ec62c6-9e86-499e-b238-cd9b16019698" />
+
 ### Language - Hindi 
-<img width="952" height="726" alt="image" src="https://github.com/user-attachments/assets/a1e28ff3-e5ec-41ae-831a-fdc4bce2c829" />
+<img width="1280" height="720" alt="image" src="https://github.com/user-attachments/assets/a1e28ff3-e5ec-41ae-831a-fdc4bce2c829" />
 
 ## Technologies Used
 
